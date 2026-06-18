@@ -1,0 +1,1896 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `AlertaInventario` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  alertaInventario_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: AlertaInventario_Data!
+  ): AlertaInventario_KeyOutput! @fdc_generated(from: "AlertaInventario", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Aviso` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  aviso_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Aviso_Data!
+  ): Aviso_KeyOutput! @fdc_generated(from: "Aviso", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Cliente` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  cliente_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Cliente_Data!
+  ): Cliente_KeyOutput! @fdc_generated(from: "Cliente", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Comanda` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comanda_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Comanda_Data!
+  ): Comanda_KeyOutput! @fdc_generated(from: "Comanda", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `ComandaDetalle` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comandaDetalle_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ComandaDetalle_Data!
+  ): ComandaDetalle_KeyOutput! @fdc_generated(from: "ComandaDetalle", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `ComandaEtapa` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comandaEtapa_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ComandaEtapa_Data!
+  ): ComandaEtapa_KeyOutput! @fdc_generated(from: "ComandaEtapa", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `ComandaHistorialEstado` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comandaHistorialEstado_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ComandaHistorialEstado_Data!
+  ): ComandaHistorialEstado_KeyOutput! @fdc_generated(from: "ComandaHistorialEstado", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `EtapaProduccion` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  etapaProduccion_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: EtapaProduccion_Data!
+  ): EtapaProduccion_KeyOutput! @fdc_generated(from: "EtapaProduccion", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Insumo` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  insumo_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Insumo_Data!
+  ): Insumo_KeyOutput! @fdc_generated(from: "Insumo", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `ModeloIa` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  modeloIa_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ModeloIa_Data!
+  ): ModeloIa_KeyOutput! @fdc_generated(from: "ModeloIa", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `MovimientoInventario` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  movimientoInventario_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: MovimientoInventario_Data!
+  ): MovimientoInventario_KeyOutput! @fdc_generated(from: "MovimientoInventario", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PatronConsumo` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  patronConsumo_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PatronConsumo_Data!
+  ): PatronConsumo_KeyOutput! @fdc_generated(from: "PatronConsumo", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `PrediccionInsumo` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  prediccionInsumo_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: PrediccionInsumo_Data!
+  ): PrediccionInsumo_KeyOutput! @fdc_generated(from: "PrediccionInsumo", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Rol` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  rol_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Rol_Data!
+  ): Rol_KeyOutput! @fdc_generated(from: "Rol", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `TipoPrenda` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  tipoPrenda_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: TipoPrenda_Data!
+  ): TipoPrenda_KeyOutput! @fdc_generated(from: "TipoPrenda", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `TipoServicio` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  tipoServicio_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: TipoServicio_Data!
+  ): TipoServicio_KeyOutput! @fdc_generated(from: "TipoServicio", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Usuario` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  usuario_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Usuario_Data!
+  ): Usuario_KeyOutput! @fdc_generated(from: "Usuario", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `AlertaInventario` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  alertaInventario_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [AlertaInventario_Data!]!
+  ): [AlertaInventario_KeyOutput!]! @fdc_generated(from: "AlertaInventario", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Aviso` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  aviso_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Aviso_Data!]!
+  ): [Aviso_KeyOutput!]! @fdc_generated(from: "Aviso", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Cliente` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  cliente_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Cliente_Data!]!
+  ): [Cliente_KeyOutput!]! @fdc_generated(from: "Cliente", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Comanda` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comanda_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Comanda_Data!]!
+  ): [Comanda_KeyOutput!]! @fdc_generated(from: "Comanda", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `ComandaDetalle` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comandaDetalle_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ComandaDetalle_Data!]!
+  ): [ComandaDetalle_KeyOutput!]! @fdc_generated(from: "ComandaDetalle", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `ComandaEtapa` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comandaEtapa_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ComandaEtapa_Data!]!
+  ): [ComandaEtapa_KeyOutput!]! @fdc_generated(from: "ComandaEtapa", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `ComandaHistorialEstado` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  comandaHistorialEstado_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ComandaHistorialEstado_Data!]!
+  ): [ComandaHistorialEstado_KeyOutput!]! @fdc_generated(from: "ComandaHistorialEstado", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `EtapaProduccion` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  etapaProduccion_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [EtapaProduccion_Data!]!
+  ): [EtapaProduccion_KeyOutput!]! @fdc_generated(from: "EtapaProduccion", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Insumo` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  insumo_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Insumo_Data!]!
+  ): [Insumo_KeyOutput!]! @fdc_generated(from: "Insumo", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `ModeloIa` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  modeloIa_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ModeloIa_Data!]!
+  ): [ModeloIa_KeyOutput!]! @fdc_generated(from: "ModeloIa", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `MovimientoInventario` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  movimientoInventario_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [MovimientoInventario_Data!]!
+  ): [MovimientoInventario_KeyOutput!]! @fdc_generated(from: "MovimientoInventario", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PatronConsumo` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  patronConsumo_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PatronConsumo_Data!]!
+  ): [PatronConsumo_KeyOutput!]! @fdc_generated(from: "PatronConsumo", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `PrediccionInsumo` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  prediccionInsumo_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [PrediccionInsumo_Data!]!
+  ): [PrediccionInsumo_KeyOutput!]! @fdc_generated(from: "PrediccionInsumo", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Rol` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  rol_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Rol_Data!]!
+  ): [Rol_KeyOutput!]! @fdc_generated(from: "Rol", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `TipoPrenda` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  tipoPrenda_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [TipoPrenda_Data!]!
+  ): [TipoPrenda_KeyOutput!]! @fdc_generated(from: "TipoPrenda", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `TipoServicio` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  tipoServicio_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [TipoServicio_Data!]!
+  ): [TipoServicio_KeyOutput!]! @fdc_generated(from: "TipoServicio", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Usuario` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  usuario_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Usuario_Data!]!
+  ): [Usuario_KeyOutput!]! @fdc_generated(from: "Usuario", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `AlertaInventario` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AlertaInventario`.
+  """
+  alertaInventario_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: AlertaInventario_Data!
+  ): AlertaInventario_KeyOutput! @fdc_generated(from: "AlertaInventario", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Aviso` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Aviso`.
+  """
+  aviso_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Aviso_Data!
+  ): Aviso_KeyOutput! @fdc_generated(from: "Aviso", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Cliente` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Cliente`.
+  """
+  cliente_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Cliente_Data!
+  ): Cliente_KeyOutput! @fdc_generated(from: "Cliente", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Comanda` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Comanda`.
+  """
+  comanda_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Comanda_Data!
+  ): Comanda_KeyOutput! @fdc_generated(from: "Comanda", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `ComandaDetalle` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ComandaDetalle`.
+  """
+  comandaDetalle_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ComandaDetalle_Data!
+  ): ComandaDetalle_KeyOutput! @fdc_generated(from: "ComandaDetalle", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `ComandaEtapa` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ComandaEtapa`.
+  """
+  comandaEtapa_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ComandaEtapa_Data!
+  ): ComandaEtapa_KeyOutput! @fdc_generated(from: "ComandaEtapa", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `ComandaHistorialEstado` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ComandaHistorialEstado`.
+  """
+  comandaHistorialEstado_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ComandaHistorialEstado_Data!
+  ): ComandaHistorialEstado_KeyOutput! @fdc_generated(from: "ComandaHistorialEstado", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `EtapaProduccion` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `EtapaProduccion`.
+  """
+  etapaProduccion_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: EtapaProduccion_Data!
+  ): EtapaProduccion_KeyOutput! @fdc_generated(from: "EtapaProduccion", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Insumo` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Insumo`.
+  """
+  insumo_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Insumo_Data!
+  ): Insumo_KeyOutput! @fdc_generated(from: "Insumo", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `ModeloIa` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ModeloIa`.
+  """
+  modeloIa_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ModeloIa_Data!
+  ): ModeloIa_KeyOutput! @fdc_generated(from: "ModeloIa", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `MovimientoInventario` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `MovimientoInventario`.
+  """
+  movimientoInventario_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: MovimientoInventario_Data!
+  ): MovimientoInventario_KeyOutput! @fdc_generated(from: "MovimientoInventario", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PatronConsumo` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PatronConsumo`.
+  """
+  patronConsumo_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PatronConsumo_Data!
+  ): PatronConsumo_KeyOutput! @fdc_generated(from: "PatronConsumo", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `PrediccionInsumo` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PrediccionInsumo`.
+  """
+  prediccionInsumo_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: PrediccionInsumo_Data!
+  ): PrediccionInsumo_KeyOutput! @fdc_generated(from: "PrediccionInsumo", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Rol` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Rol`.
+  """
+  rol_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Rol_Data!
+  ): Rol_KeyOutput! @fdc_generated(from: "Rol", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `TipoPrenda` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TipoPrenda`.
+  """
+  tipoPrenda_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: TipoPrenda_Data!
+  ): TipoPrenda_KeyOutput! @fdc_generated(from: "TipoPrenda", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `TipoServicio` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TipoServicio`.
+  """
+  tipoServicio_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: TipoServicio_Data!
+  ): TipoServicio_KeyOutput! @fdc_generated(from: "TipoServicio", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Usuario` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Usuario`.
+  """
+  usuario_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Usuario_Data!
+  ): Usuario_KeyOutput! @fdc_generated(from: "Usuario", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `AlertaInventario` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AlertaInventario`.
+  """
+  alertaInventario_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [AlertaInventario_Data!]!
+  ): [AlertaInventario_KeyOutput!]! @fdc_generated(from: "AlertaInventario", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Aviso` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Aviso`.
+  """
+  aviso_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Aviso_Data!]!
+  ): [Aviso_KeyOutput!]! @fdc_generated(from: "Aviso", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Cliente` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Cliente`.
+  """
+  cliente_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Cliente_Data!]!
+  ): [Cliente_KeyOutput!]! @fdc_generated(from: "Cliente", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Comanda` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Comanda`.
+  """
+  comanda_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Comanda_Data!]!
+  ): [Comanda_KeyOutput!]! @fdc_generated(from: "Comanda", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `ComandaDetalle` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ComandaDetalle`.
+  """
+  comandaDetalle_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ComandaDetalle_Data!]!
+  ): [ComandaDetalle_KeyOutput!]! @fdc_generated(from: "ComandaDetalle", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `ComandaEtapa` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ComandaEtapa`.
+  """
+  comandaEtapa_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ComandaEtapa_Data!]!
+  ): [ComandaEtapa_KeyOutput!]! @fdc_generated(from: "ComandaEtapa", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `ComandaHistorialEstado` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ComandaHistorialEstado`.
+  """
+  comandaHistorialEstado_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ComandaHistorialEstado_Data!]!
+  ): [ComandaHistorialEstado_KeyOutput!]! @fdc_generated(from: "ComandaHistorialEstado", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `EtapaProduccion` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `EtapaProduccion`.
+  """
+  etapaProduccion_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [EtapaProduccion_Data!]!
+  ): [EtapaProduccion_KeyOutput!]! @fdc_generated(from: "EtapaProduccion", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Insumo` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Insumo`.
+  """
+  insumo_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Insumo_Data!]!
+  ): [Insumo_KeyOutput!]! @fdc_generated(from: "Insumo", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `ModeloIa` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ModeloIa`.
+  """
+  modeloIa_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ModeloIa_Data!]!
+  ): [ModeloIa_KeyOutput!]! @fdc_generated(from: "ModeloIa", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `MovimientoInventario` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `MovimientoInventario`.
+  """
+  movimientoInventario_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [MovimientoInventario_Data!]!
+  ): [MovimientoInventario_KeyOutput!]! @fdc_generated(from: "MovimientoInventario", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PatronConsumo` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PatronConsumo`.
+  """
+  patronConsumo_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PatronConsumo_Data!]!
+  ): [PatronConsumo_KeyOutput!]! @fdc_generated(from: "PatronConsumo", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `PrediccionInsumo` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `PrediccionInsumo`.
+  """
+  prediccionInsumo_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [PrediccionInsumo_Data!]!
+  ): [PrediccionInsumo_KeyOutput!]! @fdc_generated(from: "PrediccionInsumo", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Rol` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Rol`.
+  """
+  rol_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Rol_Data!]!
+  ): [Rol_KeyOutput!]! @fdc_generated(from: "Rol", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `TipoPrenda` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TipoPrenda`.
+  """
+  tipoPrenda_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [TipoPrenda_Data!]!
+  ): [TipoPrenda_KeyOutput!]! @fdc_generated(from: "TipoPrenda", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `TipoServicio` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TipoServicio`.
+  """
+  tipoServicio_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [TipoServicio_Data!]!
+  ): [TipoServicio_KeyOutput!]! @fdc_generated(from: "TipoServicio", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Usuario` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Usuario`.
+  """
+  usuario_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Usuario_Data!]!
+  ): [Usuario_KeyOutput!]! @fdc_generated(from: "Usuario", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `AlertaInventario` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `AlertaInventario` or `null` if not found.
+  """
+  alertaInventario_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AlertaInventario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AlertaInventario_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: AlertaInventario_Data!
+  ): AlertaInventario_KeyOutput @fdc_generated(from: "AlertaInventario", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Aviso` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Aviso` or `null` if not found.
+  """
+  aviso_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Aviso_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Aviso_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Aviso_Data!
+  ): Aviso_KeyOutput @fdc_generated(from: "Aviso", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Cliente` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Cliente` or `null` if not found.
+  """
+  cliente_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Cliente_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Cliente_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Cliente_Data!
+  ): Cliente_KeyOutput @fdc_generated(from: "Cliente", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Comanda` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Comanda` or `null` if not found.
+  """
+  comanda_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Comanda_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Comanda_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Comanda_Data!
+  ): Comanda_KeyOutput @fdc_generated(from: "Comanda", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ComandaDetalle` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ComandaDetalle` or `null` if not found.
+  """
+  comandaDetalle_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ComandaDetalle_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaDetalle_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ComandaDetalle_Data!
+  ): ComandaDetalle_KeyOutput @fdc_generated(from: "ComandaDetalle", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ComandaEtapa` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ComandaEtapa` or `null` if not found.
+  """
+  comandaEtapa_update(
+    """
+    The key used to identify the object.
+    """
+    key: ComandaEtapa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaEtapa_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ComandaEtapa_Data!
+  ): ComandaEtapa_KeyOutput @fdc_generated(from: "ComandaEtapa", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ComandaHistorialEstado` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ComandaHistorialEstado` or `null` if not found.
+  """
+  comandaHistorialEstado_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ComandaHistorialEstado_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaHistorialEstado_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ComandaHistorialEstado_Data!
+  ): ComandaHistorialEstado_KeyOutput @fdc_generated(from: "ComandaHistorialEstado", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `EtapaProduccion` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `EtapaProduccion` or `null` if not found.
+  """
+  etapaProduccion_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: EtapaProduccion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: EtapaProduccion_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: EtapaProduccion_Data!
+  ): EtapaProduccion_KeyOutput @fdc_generated(from: "EtapaProduccion", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Insumo` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Insumo` or `null` if not found.
+  """
+  insumo_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Insumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Insumo_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Insumo_Data!
+  ): Insumo_KeyOutput @fdc_generated(from: "Insumo", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ModeloIa` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ModeloIa` or `null` if not found.
+  """
+  modeloIa_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ModeloIa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ModeloIa_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ModeloIa_Data!
+  ): ModeloIa_KeyOutput @fdc_generated(from: "ModeloIa", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `MovimientoInventario` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `MovimientoInventario` or `null` if not found.
+  """
+  movimientoInventario_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: MovimientoInventario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MovimientoInventario_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: MovimientoInventario_Data!
+  ): MovimientoInventario_KeyOutput @fdc_generated(from: "MovimientoInventario", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PatronConsumo` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PatronConsumo` or `null` if not found.
+  """
+  patronConsumo_update(
+    """
+    The key used to identify the object.
+    """
+    key: PatronConsumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PatronConsumo_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PatronConsumo_Data!
+  ): PatronConsumo_KeyOutput @fdc_generated(from: "PatronConsumo", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `PrediccionInsumo` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `PrediccionInsumo` or `null` if not found.
+  """
+  prediccionInsumo_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PrediccionInsumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PrediccionInsumo_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: PrediccionInsumo_Data!
+  ): PrediccionInsumo_KeyOutput @fdc_generated(from: "PrediccionInsumo", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Rol` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Rol` or `null` if not found.
+  """
+  rol_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Rol_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Rol_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Rol_Data!
+  ): Rol_KeyOutput @fdc_generated(from: "Rol", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `TipoPrenda` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `TipoPrenda` or `null` if not found.
+  """
+  tipoPrenda_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TipoPrenda_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TipoPrenda_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: TipoPrenda_Data!
+  ): TipoPrenda_KeyOutput @fdc_generated(from: "TipoPrenda", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `TipoServicio` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `TipoServicio` or `null` if not found.
+  """
+  tipoServicio_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TipoServicio_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TipoServicio_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: TipoServicio_Data!
+  ): TipoServicio_KeyOutput @fdc_generated(from: "TipoServicio", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Usuario` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Usuario` or `null` if not found.
+  """
+  usuario_update(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: Usuario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Usuario_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Usuario_Data!
+  ): Usuario_KeyOutput @fdc_generated(from: "Usuario", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `AlertaInventario` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  alertaInventario_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: AlertaInventario_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: AlertaInventario_Data!
+  ): Int! @fdc_generated(from: "AlertaInventario", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Aviso` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  aviso_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Aviso_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Aviso_Data!
+  ): Int! @fdc_generated(from: "Aviso", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Cliente` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  cliente_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Cliente_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Cliente_Data!
+  ): Int! @fdc_generated(from: "Cliente", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Comanda` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  comanda_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Comanda_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Comanda_Data!
+  ): Int! @fdc_generated(from: "Comanda", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `ComandaDetalle` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  comandaDetalle_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ComandaDetalle_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ComandaDetalle_Data!
+  ): Int! @fdc_generated(from: "ComandaDetalle", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `ComandaEtapa` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  comandaEtapa_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ComandaEtapa_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ComandaEtapa_Data!
+  ): Int! @fdc_generated(from: "ComandaEtapa", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `ComandaHistorialEstado` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  comandaHistorialEstado_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ComandaHistorialEstado_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ComandaHistorialEstado_Data!
+  ): Int! @fdc_generated(from: "ComandaHistorialEstado", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `EtapaProduccion` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  etapaProduccion_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: EtapaProduccion_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: EtapaProduccion_Data!
+  ): Int! @fdc_generated(from: "EtapaProduccion", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Insumo` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  insumo_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Insumo_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Insumo_Data!
+  ): Int! @fdc_generated(from: "Insumo", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `ModeloIa` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  modeloIa_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ModeloIa_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ModeloIa_Data!
+  ): Int! @fdc_generated(from: "ModeloIa", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `MovimientoInventario` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  movimientoInventario_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: MovimientoInventario_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: MovimientoInventario_Data!
+  ): Int! @fdc_generated(from: "MovimientoInventario", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PatronConsumo` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  patronConsumo_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PatronConsumo_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PatronConsumo_Data!
+  ): Int! @fdc_generated(from: "PatronConsumo", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `PrediccionInsumo` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  prediccionInsumo_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: PrediccionInsumo_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: PrediccionInsumo_Data!
+  ): Int! @fdc_generated(from: "PrediccionInsumo", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Rol` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  rol_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Rol_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Rol_Data!
+  ): Int! @fdc_generated(from: "Rol", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `TipoPrenda` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  tipoPrenda_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: TipoPrenda_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: TipoPrenda_Data!
+  ): Int! @fdc_generated(from: "TipoPrenda", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `TipoServicio` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  tipoServicio_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: TipoServicio_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: TipoServicio_Data!
+  ): Int! @fdc_generated(from: "TipoServicio", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Usuario` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  usuario_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Usuario_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Usuario_Data!
+  ): Int! @fdc_generated(from: "Usuario", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `AlertaInventario` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  alertaInventario_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AlertaInventario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AlertaInventario_FirstRow
+  ): AlertaInventario_KeyOutput @fdc_generated(from: "AlertaInventario", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Aviso` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  aviso_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Aviso_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Aviso_FirstRow
+  ): Aviso_KeyOutput @fdc_generated(from: "Aviso", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Cliente` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  cliente_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Cliente_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Cliente_FirstRow
+  ): Cliente_KeyOutput @fdc_generated(from: "Cliente", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Comanda` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  comanda_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Comanda_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Comanda_FirstRow
+  ): Comanda_KeyOutput @fdc_generated(from: "Comanda", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ComandaDetalle` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  comandaDetalle_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ComandaDetalle_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaDetalle_FirstRow
+  ): ComandaDetalle_KeyOutput @fdc_generated(from: "ComandaDetalle", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ComandaEtapa` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  comandaEtapa_delete(
+    """
+    The key used to identify the object.
+    """
+    key: ComandaEtapa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaEtapa_FirstRow
+  ): ComandaEtapa_KeyOutput @fdc_generated(from: "ComandaEtapa", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ComandaHistorialEstado` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  comandaHistorialEstado_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ComandaHistorialEstado_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaHistorialEstado_FirstRow
+  ): ComandaHistorialEstado_KeyOutput @fdc_generated(from: "ComandaHistorialEstado", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `EtapaProduccion` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  etapaProduccion_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: EtapaProduccion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: EtapaProduccion_FirstRow
+  ): EtapaProduccion_KeyOutput @fdc_generated(from: "EtapaProduccion", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Insumo` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  insumo_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Insumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Insumo_FirstRow
+  ): Insumo_KeyOutput @fdc_generated(from: "Insumo", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ModeloIa` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  modeloIa_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ModeloIa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ModeloIa_FirstRow
+  ): ModeloIa_KeyOutput @fdc_generated(from: "ModeloIa", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `MovimientoInventario` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  movimientoInventario_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: MovimientoInventario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MovimientoInventario_FirstRow
+  ): MovimientoInventario_KeyOutput @fdc_generated(from: "MovimientoInventario", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PatronConsumo` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  patronConsumo_delete(
+    """
+    The key used to identify the object.
+    """
+    key: PatronConsumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PatronConsumo_FirstRow
+  ): PatronConsumo_KeyOutput @fdc_generated(from: "PatronConsumo", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `PrediccionInsumo` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  prediccionInsumo_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PrediccionInsumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PrediccionInsumo_FirstRow
+  ): PrediccionInsumo_KeyOutput @fdc_generated(from: "PrediccionInsumo", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Rol` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  rol_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Rol_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Rol_FirstRow
+  ): Rol_KeyOutput @fdc_generated(from: "Rol", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `TipoPrenda` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  tipoPrenda_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TipoPrenda_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TipoPrenda_FirstRow
+  ): TipoPrenda_KeyOutput @fdc_generated(from: "TipoPrenda", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `TipoServicio` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  tipoServicio_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TipoServicio_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TipoServicio_FirstRow
+  ): TipoServicio_KeyOutput @fdc_generated(from: "TipoServicio", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Usuario` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  usuario_delete(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: Usuario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Usuario_FirstRow
+  ): Usuario_KeyOutput @fdc_generated(from: "Usuario", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `AlertaInventario` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  alertaInventario_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: AlertaInventario_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "AlertaInventario", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Aviso` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  aviso_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Aviso_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Aviso", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Cliente` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  cliente_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Cliente_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Cliente", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Comanda` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  comanda_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Comanda_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Comanda", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ComandaDetalle` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  comandaDetalle_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ComandaDetalle_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ComandaDetalle", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ComandaEtapa` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  comandaEtapa_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ComandaEtapa_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ComandaEtapa", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ComandaHistorialEstado` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  comandaHistorialEstado_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ComandaHistorialEstado_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ComandaHistorialEstado", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `EtapaProduccion` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  etapaProduccion_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: EtapaProduccion_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "EtapaProduccion", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Insumo` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  insumo_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Insumo_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Insumo", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ModeloIa` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  modeloIa_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ModeloIa_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ModeloIa", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `MovimientoInventario` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  movimientoInventario_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: MovimientoInventario_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "MovimientoInventario", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PatronConsumo` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  patronConsumo_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PatronConsumo_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PatronConsumo", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `PrediccionInsumo` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  prediccionInsumo_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: PrediccionInsumo_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "PrediccionInsumo", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Rol` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  rol_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Rol_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Rol", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `TipoPrenda` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  tipoPrenda_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: TipoPrenda_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "TipoPrenda", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `TipoServicio` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  tipoServicio_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: TipoServicio_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "TipoServicio", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Usuario` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  usuario_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Usuario_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Usuario", purpose: DELETE_MULTIPLE)
+}

@@ -1,0 +1,119 @@
+I0617 15:30:21.967557   22420 load.go:31] Reloading schema and connectors...
+I0617 15:30:22.056455   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 2701] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: 
+E0617 15:30:22.107598   22420 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+I0617 15:30:22.114047   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] main\implicit.gql [7019B] main\input.gql [215503B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] 
+I0617 15:30:22.114047   22420 load.go:109] Finished reloading
+I0617 15:30:22.117658   22420 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I0617 15:30:22.118364   22420 dev.go:104] Listening on address (HTTP + gRPC): [::1]:9399
+I0617 15:30:25.198531   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre f5d1] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: 
+I0617 15:30:25.224267   22420 configure_emulator.go:21] ConfigureEmulator successed
+Request: service_id: "lavanderia-el-cobre"
+connection_string: "postgres://127.0.0.1:5432/el-cobre?sslmode=disable"
+database: "el-cobre"
+
+Response: 
+I0617 16:13:12.115887   22420 load.go:31] Reloading schema and connectors...
+I0617 16:13:12.440403   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 14ab] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1773B] example\queries.gql [606B] 
+I0617 16:13:12.491852   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:13:12.507331   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] main\implicit.gql [7019B] main\input.gql [215503B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] 
+I0617 16:13:12.520319   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: react\README.md [32204B] README.md [25104B] react\package.json [460B] react\esm\index.esm.js [1897B] .guides/usage.md [2463B] .guides/setup.md [1682B] .guides/config.json [236B] index.d.ts [6356B] esm\index.esm.js [3017B] esm\package.json [17B] package.json [853B] react\index.cjs.js [2001B] index.cjs.js [3375B] react\index.d.ts [2379B] react\esm\package.json [17B] 
+I0617 16:13:12.530863   22420 installsdk.go:86] Running command: C:\Program Files\nodejs\pnpm.cmd link src\dataconnect-generated
+E0617 16:13:13.718896   22420 installsdk.go:88] Failed to install package: exit status 1
+I0617 16:13:13.718896   22420 load.go:109] Finished reloading
+I0617 16:17:12.116079   22420 load.go:31] Reloading schema and connectors...
+I0617 16:17:12.403191   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre d493] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1863B] example\queries.gql [700B] 
+I0617 16:17:12.458312   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:17:12.474371   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\implicit.gql [7019B] prelude.gql [84995B] main\input.gql [215503B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] 
+I0617 16:17:12.487759   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: index.cjs.js [3375B] package.json [853B] react\esm\package.json [17B] react\index.cjs.js [2001B] index.d.ts [6356B] react\package.json [460B] react\README.md [32204B] .guides/setup.md [1682B] README.md [25104B] react\esm\index.esm.js [1897B] .guides/usage.md [2463B] esm\index.esm.js [3017B] esm\package.json [17B] react\index.d.ts [2379B] .guides/config.json [236B] 
+I0617 16:17:12.489462   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 16:17:12.489462   22420 load.go:109] Finished reloading
+I0617 16:24:12.115528   22420 load.go:31] Reloading schema and connectors...
+I0617 16:24:12.398028   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre b269] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\queries.gql [700B] example\mutations.gql [1860B] 
+I0617 16:24:12.450505   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:24:12.467093   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] main\implicit.gql [7019B] main\input.gql [215503B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] 
+I0617 16:24:12.481332   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: README.md [25104B] react\package.json [460B] react\index.cjs.js [2001B] esm\index.esm.js [3017B] esm\package.json [17B] index.cjs.js [3375B] react\README.md [32204B] .guides/setup.md [1682B] .guides/config.json [236B] index.d.ts [6356B] react\esm\index.esm.js [1897B] .guides/usage.md [2463B] react\index.d.ts [2379B] react\esm\package.json [17B] package.json [853B] 
+I0617 16:24:12.483326   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 16:24:12.483326   22420 load.go:109] Finished reloading
+I0617 16:25:22.116539   22420 load.go:31] Reloading schema and connectors...
+I0617 16:25:22.442678   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 1fea] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1203B] example\queries.gql [700B] 
+I0617 16:25:22.496077   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:25:22.517241   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\implicit.gql [7019B] main\input.gql [215503B] prelude.gql [84995B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] 
+I0617 16:25:22.531445   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: .guides/setup.md [1682B] esm\package.json [17B] index.cjs.js [2903B] README.md [21957B] react\esm\package.json [17B] react\index.cjs.js [1659B] react\README.md [28165B] esm\index.esm.js [2590B] react\esm\index.esm.js [1571B] .guides/usage.md [2293B] .guides/config.json [236B] package.json [853B] react\index.d.ts [2020B] index.d.ts [5806B] react\package.json [460B] 
+I0617 16:25:22.533145   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 16:25:22.533145   22420 load.go:109] Finished reloading
+I0617 16:36:12.115300   22420 load.go:31] Reloading schema and connectors...
+I0617 16:36:12.374993   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 826a] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1589B] example\queries.gql [700B] 
+I0617 16:36:12.427265   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:36:12.441695   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] main\query.gql [22313B] main\mutation.gql [60888B] main\implicit.gql [7019B] main\input.gql [215503B] main\relation.gql [99720B] 
+I0617 16:36:12.455051   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: index.cjs.js [3510B] react\esm\package.json [17B] react\esm\index.esm.js [1942B] package.json [853B] react\index.cjs.js [2061B] react\README.md [32625B] index.d.ts [6546B] README.md [25795B] react\package.json [460B] .guides/usage.md [2538B] esm\index.esm.js [3107B] react\index.d.ts [2484B] .guides/setup.md [1682B] .guides/config.json [236B] esm\package.json [17B] 
+I0617 16:36:12.458608   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 16:36:12.458608   22420 load.go:109] Finished reloading
+I0617 16:38:22.115726   22420 load.go:31] Reloading schema and connectors...
+I0617 16:38:22.417932   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 9e35] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1589B] example\queries.gql [700B] 
+I0617 16:38:22.486665   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:38:22.504043   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\mutation.gql [60888B] prelude.gql [84995B] main\implicit.gql [7019B] main\input.gql [215503B] main\relation.gql [99720B] main\query.gql [22313B] 
+I0617 16:38:22.524183   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: .guides/usage.md [2538B] index.cjs.js [3333B] react\package.json [460B] react\esm\index.esm.js [1942B] index.d.ts [6470B] esm\index.esm.js [2974B] package.json [853B] README.md [25795B] react\index.d.ts [2484B] .guides/config.json [236B] react\esm\package.json [17B] react\index.cjs.js [2061B] react\README.md [32625B] .guides/setup.md [1682B] esm\package.json [17B] 
+I0617 16:38:22.526651   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 16:38:22.526651   22420 load.go:109] Finished reloading
+I0617 16:41:22.116383   22420 load.go:31] Reloading schema and connectors...
+I0617 16:41:22.378704   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 4240] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1203B] example\queries.gql [700B] 
+I0617 16:41:22.427938   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 16:41:22.443546   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\implicit.gql [7019B] main\input.gql [215503B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] prelude.gql [84995B] 
+I0617 16:41:22.457189   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: esm\index.esm.js [2457B] react\esm\package.json [17B] package.json [853B] README.md [21957B] react\index.d.ts [2020B] react\esm\index.esm.js [1571B] react\README.md [28165B] .guides/setup.md [1682B] .guides/config.json [236B] index.d.ts [5730B] esm\package.json [17B] index.cjs.js [2726B] react\package.json [460B] react\index.cjs.js [1659B] .guides/usage.md [2293B] 
+I0617 16:41:22.458246   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 16:41:22.458777   22420 load.go:109] Finished reloading
+I0617 17:03:52.115909   22420 load.go:31] Reloading schema and connectors...
+I0617 17:03:52.374634   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 8d7c] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1203B] example\queries.gql [1241B] 
+I0617 17:03:52.428064   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 17:03:52.445410   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] main\implicit.gql [7019B] main\input.gql [215503B] 
+I0617 17:03:52.463133   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: .guides/config.json [236B] package.json [853B] esm\index.esm.js [3026B] .guides/setup.md [1682B] esm\package.json [17B] index.cjs.js [3346B] README.md [25418B] react\index.d.ts [2339B] react\package.json [460B] react\esm\package.json [17B] react\index.cjs.js [1980B] react\README.md [31679B] index.d.ts [6620B] react\esm\index.esm.js [1874B] .guides/usage.md [2473B] 
+I0617 17:03:52.465985   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 17:03:52.465985   22420 load.go:109] Finished reloading
+I0617 17:04:02.115970   22420 load.go:31] Reloading schema and connectors...
+I0617 17:04:02.375560   22420 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre a974] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1934B] example\queries.gql [1241B] 
+I0617 17:04:02.433507   22420 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+I0617 17:04:02.452894   22420 collector.go:107] schema extensions wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] prelude.gql [84995B] main\implicit.gql [7019B] main\input.gql [215503B] 
+I0617 17:04:02.468440   22420 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: react\esm\package.json [17B] react\README.md [36704B] esm\index.esm.js [3567B] README.md [30417B] .guides/usage.md [2794B] esm\package.json [17B] package.json [853B] react\index.d.ts [2860B] react\esm\index.esm.js [2234B] .guides/config.json [236B] index.d.ts [7637B] index.cjs.js [3956B] react\package.json [460B] react\index.cjs.js [2364B] .guides/setup.md [1682B] 
+I0617 17:04:02.471055   22420 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0617 17:04:02.471055   22420 load.go:109] Finished reloading

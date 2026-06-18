@@ -1,0 +1,898 @@
+extend type Query {
+  """
+  ✨ Look up a single `AlertaInventario` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  alertaInventario(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AlertaInventario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AlertaInventario_FirstRow
+  ): AlertaInventario @fdc_generated(from: "AlertaInventario", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Aviso` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  aviso(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Aviso_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Aviso_FirstRow
+  ): Aviso @fdc_generated(from: "Aviso", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Cliente` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  cliente(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Cliente_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Cliente_FirstRow
+  ): Cliente @fdc_generated(from: "Cliente", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Comanda` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  comanda(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Comanda_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Comanda_FirstRow
+  ): Comanda @fdc_generated(from: "Comanda", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `ComandaDetalle` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  comandaDetalle(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ComandaDetalle_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaDetalle_FirstRow
+  ): ComandaDetalle @fdc_generated(from: "ComandaDetalle", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `ComandaEtapa` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  comandaEtapa(
+    """
+    The key used to identify the object.
+    """
+    key: ComandaEtapa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaEtapa_FirstRow
+  ): ComandaEtapa @fdc_generated(from: "ComandaEtapa", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `ComandaHistorialEstado` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  comandaHistorialEstado(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ComandaHistorialEstado_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ComandaHistorialEstado_FirstRow
+  ): ComandaHistorialEstado @fdc_generated(from: "ComandaHistorialEstado", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `EtapaProduccion` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  etapaProduccion(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: EtapaProduccion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: EtapaProduccion_FirstRow
+  ): EtapaProduccion @fdc_generated(from: "EtapaProduccion", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Insumo` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  insumo(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Insumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Insumo_FirstRow
+  ): Insumo @fdc_generated(from: "Insumo", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `ModeloIa` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  modeloIa(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ModeloIa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ModeloIa_FirstRow
+  ): ModeloIa @fdc_generated(from: "ModeloIa", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `MovimientoInventario` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  movimientoInventario(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: MovimientoInventario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MovimientoInventario_FirstRow
+  ): MovimientoInventario @fdc_generated(from: "MovimientoInventario", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `PatronConsumo` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  patronConsumo(
+    """
+    The key used to identify the object.
+    """
+    key: PatronConsumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PatronConsumo_FirstRow
+  ): PatronConsumo @fdc_generated(from: "PatronConsumo", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `PrediccionInsumo` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  prediccionInsumo(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: PrediccionInsumo_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: PrediccionInsumo_FirstRow
+  ): PrediccionInsumo @fdc_generated(from: "PrediccionInsumo", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Rol` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  rol(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Rol_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Rol_FirstRow
+  ): Rol @fdc_generated(from: "Rol", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `TipoPrenda` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  tipoPrenda(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TipoPrenda_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TipoPrenda_FirstRow
+  ): TipoPrenda @fdc_generated(from: "TipoPrenda", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `TipoServicio` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  tipoServicio(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TipoServicio_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TipoServicio_FirstRow
+  ): TipoServicio @fdc_generated(from: "TipoServicio", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Usuario` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  usuario(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: Usuario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Usuario_FirstRow
+  ): Usuario @fdc_generated(from: "Usuario", purpose: QUERY_SINGLE)
+  """
+  ✨ List `AlertaInventario` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  alertaInventarios(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AlertaInventario_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AlertaInventario_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AlertaInventario_Having
+  ): [AlertaInventario!]! @fdc_generated(from: "AlertaInventario", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Aviso` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  avisos(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Aviso_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Aviso_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Aviso_Having
+  ): [Aviso!]! @fdc_generated(from: "Aviso", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Cliente` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  clientes(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Cliente_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Cliente_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Cliente_Having
+  ): [Cliente!]! @fdc_generated(from: "Cliente", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Comanda` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  comandas(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Comanda_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Comanda_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Comanda_Having
+  ): [Comanda!]! @fdc_generated(from: "Comanda", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `ComandaDetalle` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  comandaDetalles(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ComandaDetalle_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ComandaDetalle_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ComandaDetalle_Having
+  ): [ComandaDetalle!]! @fdc_generated(from: "ComandaDetalle", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `ComandaEtapa` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  comandaEtapas(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ComandaEtapa_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ComandaEtapa_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ComandaEtapa_Having
+  ): [ComandaEtapa!]! @fdc_generated(from: "ComandaEtapa", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `ComandaHistorialEstado` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  comandaHistorialEstados(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ComandaHistorialEstado_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ComandaHistorialEstado_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ComandaHistorialEstado_Having
+  ): [ComandaHistorialEstado!]! @fdc_generated(from: "ComandaHistorialEstado", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `EtapaProduccion` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  etapaProduccions(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: EtapaProduccion_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [EtapaProduccion_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: EtapaProduccion_Having
+  ): [EtapaProduccion!]! @fdc_generated(from: "EtapaProduccion", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Insumo` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  insumos(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Insumo_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Insumo_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Insumo_Having
+  ): [Insumo!]! @fdc_generated(from: "Insumo", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `ModeloIa` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  modeloIas(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ModeloIa_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ModeloIa_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ModeloIa_Having
+  ): [ModeloIa!]! @fdc_generated(from: "ModeloIa", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `MovimientoInventario` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  movimientoInventarios(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovimientoInventario_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovimientoInventario_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: MovimientoInventario_Having
+  ): [MovimientoInventario!]! @fdc_generated(from: "MovimientoInventario", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `PatronConsumo` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  patronConsumos(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PatronConsumo_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PatronConsumo_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PatronConsumo_Having
+  ): [PatronConsumo!]! @fdc_generated(from: "PatronConsumo", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `PrediccionInsumo` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  prediccionInsumos(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: PrediccionInsumo_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [PrediccionInsumo_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: PrediccionInsumo_Having
+  ): [PrediccionInsumo!]! @fdc_generated(from: "PrediccionInsumo", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Rol` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  rols(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Rol_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Rol_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Rol_Having
+  ): [Rol!]! @fdc_generated(from: "Rol", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `TipoPrenda` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  tipoPrendas(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TipoPrenda_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TipoPrenda_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TipoPrenda_Having
+  ): [TipoPrenda!]! @fdc_generated(from: "TipoPrenda", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `TipoServicio` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  tipoServicios(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TipoServicio_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TipoServicio_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TipoServicio_Having
+  ): [TipoServicio!]! @fdc_generated(from: "TipoServicio", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Usuario` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  usuarios(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Usuario_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Usuario_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Usuario_Having
+  ): [Usuario!]! @fdc_generated(from: "Usuario", purpose: QUERY_MULTIPLE)
+}

@@ -2,10 +2,22 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, LogIn, Package, Search, CheckCircle2, Lock, Mail, User } from "lucide-react";
+import { Menu, X, LogIn, Package, Search, CheckCircle2, Lock, Mail, User, IdCard, Phone, MapPin, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+import { QueryFetchPolicy } from "firebase/data-connect";
+import { auth, dataConnect } from "@/lib/firebase/client";
+import { getRoles, registrarseComoCliente, getMiPerfil, type GetRolesData } from "@/src/dataconnect-generated";
+import { cleanRut, formatRut, isValidRut, validatePassword } from "@/lib/validators";
+import { mapAuthError } from "@/lib/firebase/errors";
 
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -28,6 +40,37 @@ export default function Navbar() {
   const [authLoading, setAuthLoading] = useState(false);
   const [authSuccess, setAuthSuccess] = useState(false);
   const [authError, setAuthError] = useState("");
+
+  // Register-only fields (Usuario / Cliente). El registro público siempre
+  // crea cuentas de tipo "cliente" — el resto de roles se crean desde la intranet.
+  const [authApellido, setAuthApellido] = useState("");
+  const [authRut, setAuthRut] = useState("");
+  const [authTelefono, setAuthTelefono] = useState("");
+  const [authDireccion, setAuthDireccion] = useState("");
+  const [roles, setRoles] = useState<GetRolesData["rols"]>([]);
+  const clienteRolId = roles.find((r) => r.nombre === "cliente")?.id;
+
+  const rutDigits = cleanRut(authRut);
+  const rutTouched = rutDigits.length > 0;
+  const rutValid = rutTouched && isValidRut(authRut);
+  const passwordCheck = validatePassword(authPassword);
+
+  const resetRegisterFields = () => {
+    setAuthName("");
+    setAuthApellido("");
+    setAuthRut("");
+    setAuthTelefono("");
+    setAuthDireccion("");
+    setAuthConfirmPass("");
+    setAuthPassword("");
+  };
+
+  // Load role catalog once, solo para obtener el id del rol "cliente"
+  useEffect(() => {
+    getRoles(dataConnect)
+      .then(({ data }) => setRoles(data.rols))
+      .catch(() => setRoles([]));
+  }, []);
 
   // Lock body scroll when any modal is open
   useEffect(() => {
@@ -85,8 +128,8 @@ export default function Navbar() {
     }, 1200);
   };
 
-  // Simulated Auth Submission
-  const handleAuthSubmit = (e: React.FormEvent) => {
+  // Auth Submission (Firebase Auth + Data Connect)
+  const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError("");
 
@@ -96,7 +139,13 @@ export default function Navbar() {
         return;
       }
       setAuthLoading(true);
-      setTimeout(() => {
+      try {
+        await signInWithEmailAndPassword(auth, authEmail.trim(), authPassword);
+        // SERVER_ONLY: el perfil depende de auth.uid (no hay variables), así que
+        // el caché por defecto del SDK devolvería el perfil de la sesión anterior.
+        const { data } = await getMiPerfil(dataConnect, { fetchPolicy: QueryFetchPolicy.SERVER_ONLY });
+        const rolNombre = data.usuario?.rol?.nombre;
+
         setAuthLoading(false);
         setAuthSuccess(true);
         setTimeout(() => {
@@ -104,43 +153,89 @@ export default function Navbar() {
           setAuthSuccess(false);
           setAuthEmail("");
           setAuthPassword("");
-        }, 1500);
-      }, 1200);
+          router.push(rolNombre === "admin" ? "/intranet" : "/cuenta");
+        }, 1200);
+      } catch (err) {
+        setAuthLoading(false);
+        setAuthError(mapAuthError(err));
+      }
     } else if (authView === "register") {
-      if (!authName.trim() || !authEmail.trim() || !authPassword.trim() || !authConfirmPass.trim()) {
+      if (
+        !authName.trim() ||
+        !authApellido.trim() ||
+        !authRut.trim() ||
+        !authEmail.trim() ||
+        !authPassword.trim() ||
+        !authConfirmPass.trim()
+      ) {
         setAuthError("Todos los campos son obligatorios.");
+        return;
+      }
+      if (!clienteRolId) {
+        setAuthError("No se pudo cargar el catálogo de roles. Intenta nuevamente.");
+        return;
+      }
+      if (!isValidRut(authRut)) {
+        setAuthError("El RUT ingresado no es válido.");
+        return;
+      }
+      if (!passwordCheck.valid) {
+        setAuthError(passwordCheck.message);
         return;
       }
       if (authPassword !== authConfirmPass) {
         setAuthError("Las contraseñas no coinciden.");
         return;
       }
+
       setAuthLoading(true);
-      setTimeout(() => {
+      let createdUserId: string | null = null;
+      try {
+        const credential = await createUserWithEmailAndPassword(auth, authEmail.trim(), authPassword);
+        createdUserId = credential.user.uid;
+
+        await registrarseComoCliente(dataConnect, {
+          rolId: clienteRolId,
+          rut: formatRut(authRut),
+          nombre: authName.trim(),
+          apellido: authApellido.trim(),
+          telefono: authTelefono.trim() || null,
+          email: authEmail.trim(),
+          direccion: authDireccion.trim() || null,
+        });
+
         setAuthLoading(false);
         setAuthSuccess(true);
         setTimeout(() => {
           setAuthView("login");
           setAuthSuccess(false);
-          setAuthName("");
-          setAuthConfirmPass("");
-          setAuthPassword("");
+          resetRegisterFields();
         }, 1550);
-      }, 1200);
+      } catch (err) {
+        setAuthLoading(false);
+        if (createdUserId && auth.currentUser) {
+          await auth.currentUser.delete().catch(() => {});
+        }
+        setAuthError(mapAuthError(err));
+      }
     } else if (authView === "forgot") {
       if (!authEmail.trim()) {
         setAuthError("Por favor ingresa tu correo electrónico.");
         return;
       }
       setAuthLoading(true);
-      setTimeout(() => {
+      try {
+        await sendPasswordResetEmail(auth, authEmail.trim());
         setAuthLoading(false);
         setAuthSuccess(true);
         setTimeout(() => {
           setAuthView("login");
           setAuthSuccess(false);
         }, 3000);
-      }, 1200);
+      } catch (err) {
+        setAuthLoading(false);
+        setAuthError(mapAuthError(err));
+      }
     }
   };
 
@@ -555,21 +650,91 @@ export default function Navbar() {
                         </div>
                       )}
 
-                      {/* Register Name */}
+                      {/* Register-only fields */}
                       {authView === "register" && (
-                        <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold uppercase tracking-wider text-stone-600">Nombre Completo</label>
-                          <div className="relative">
-                            <input
-                              type="text"
-                              placeholder="Juan Pérez"
-                              value={authName}
-                              onChange={(e) => setAuthName(e.target.value)}
-                              className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm font-medium"
-                            />
-                            <User className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                        <>
+                          <div className="grid grid-cols-2 gap-3">
+                            <div className="space-y-1.5">
+                              <label className="text-[10px] font-bold uppercase tracking-wider text-stone-600">Nombre</label>
+                              <div className="relative">
+                                <input
+                                  type="text"
+                                  placeholder="Juan"
+                                  value={authName}
+                                  onChange={(e) => setAuthName(e.target.value)}
+                                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm font-medium"
+                                />
+                                <User className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                              </div>
+                            </div>
+                            <div className="space-y-1.5">
+                              <label className="text-[10px] font-bold uppercase tracking-wider text-stone-600">Apellido</label>
+                              <input
+                                type="text"
+                                placeholder="Pérez"
+                                value={authApellido}
+                                onChange={(e) => setAuthApellido(e.target.value)}
+                                className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm font-medium"
+                              />
+                            </div>
                           </div>
-                        </div>
+
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-stone-600">RUT</label>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                placeholder="12.345.678-9"
+                                value={authRut}
+                                onChange={(e) => setAuthRut(formatRut(e.target.value))}
+                                className={`w-full pl-10 pr-9 py-3 rounded-xl border bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:bg-white transition-all text-sm font-medium ${
+                                  rutTouched ? (rutValid ? "border-green-300 focus:border-green-500" : "border-red-300 focus:border-red-500") : "border-stone-200 focus:border-brand-500"
+                                }`}
+                              />
+                              <IdCard className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                              {rutTouched && (
+                                rutValid ? (
+                                  <CheckCircle2 className="w-4 h-4 text-green-500 absolute right-3.5 top-1/2 -translate-y-1/2" />
+                                ) : (
+                                  <AlertCircle className="w-4 h-4 text-red-500 absolute right-3.5 top-1/2 -translate-y-1/2" />
+                                )
+                              )}
+                            </div>
+                            {rutTouched && (
+                              <p className={`text-[11px] font-semibold ${rutValid ? "text-green-600" : "text-red-500"}`}>
+                                {rutValid ? "RUT válido" : "RUT inválido"}
+                              </p>
+                            )}
+                          </div>
+
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-stone-600">Teléfono</label>
+                            <div className="relative">
+                              <input
+                                type="tel"
+                                placeholder="+56 9 1234 5678"
+                                value={authTelefono}
+                                onChange={(e) => setAuthTelefono(e.target.value)}
+                                className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm font-medium"
+                              />
+                              <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                            </div>
+                          </div>
+
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-stone-600">Dirección</label>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                placeholder="Av. Siempre Viva 123, Calama"
+                                value={authDireccion}
+                                onChange={(e) => setAuthDireccion(e.target.value)}
+                                className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm font-medium"
+                              />
+                              <MapPin className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                            </div>
+                          </div>
+                        </>
                       )}
 
                       {/* Common Email Input */}
@@ -608,10 +773,19 @@ export default function Navbar() {
                               placeholder="••••••••"
                               value={authPassword}
                               onChange={(e) => setAuthPassword(e.target.value)}
-                              className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm font-medium"
+                              className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-stone-50/50 text-stone-850 placeholder-stone-400 focus:outline-none focus:bg-white transition-all text-sm font-medium ${
+                                authView === "register" && authPassword
+                                  ? (passwordCheck.valid ? "border-green-300 focus:border-green-500" : "border-red-300 focus:border-red-500")
+                                  : "border-stone-200 focus:border-brand-500"
+                              }`}
                             />
                             <Lock className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                           </div>
+                          {authView === "register" && authPassword && (
+                            <p className={`text-[11px] font-semibold ${passwordCheck.valid ? "text-green-600" : "text-red-500"}`}>
+                              {passwordCheck.message}
+                            </p>
+                          )}
                         </div>
                       )}
 
@@ -629,6 +803,9 @@ export default function Navbar() {
                             />
                             <Lock className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                           </div>
+                          {authConfirmPass && authConfirmPass !== authPassword && (
+                            <p className="text-[11px] font-semibold text-red-500">Las contraseñas no coinciden</p>
+                          )}
                         </div>
                       )}
 

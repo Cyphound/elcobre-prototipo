@@ -1,0 +1,128 @@
+extend type AlertaInventario {
+  """
+  ✨ Implicit foreign key field based on `AlertaInventario`.`insumo`. It must match the value of `Insumo`.`id`. See `@ref` for how to customize it.
+  """
+  insumoId: UUID! @fdc_generated(from: "AlertaInventario.insumo", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Aviso {
+  """
+  ✨ Implicit foreign key field based on `Aviso`.`autor`. It must match the value of `Usuario`.`id`. See `@ref` for how to customize it.
+  """
+  autorId: String! @fdc_generated(from: "Aviso.autor", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Aviso`.`rolDestinatario`. It must match the value of `Rol`.`id`. See `@ref` for how to customize it.
+  """
+  rolDestinatarioId: UUID @fdc_generated(from: "Aviso.rolDestinatario", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Cliente {
+  """
+  ✨ Implicit foreign key field based on `Cliente`.`usuario`. It must match the value of `Usuario`.`id`. See `@ref` for how to customize it.
+  """
+  usuarioId: String @fdc_generated(from: "Cliente.usuario", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Comanda {
+  """
+  ✨ Implicit foreign key field based on `Comanda`.`cliente`. It must match the value of `Cliente`.`id`. See `@ref` for how to customize it.
+  """
+  clienteId: UUID! @fdc_generated(from: "Comanda.cliente", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Comanda`.`recepcionista`. It must match the value of `Usuario`.`id`. See `@ref` for how to customize it.
+  """
+  recepcionistaId: String @fdc_generated(from: "Comanda.recepcionista", purpose: IMPLICIT_REF_FIELD)
+}
+extend type ComandaDetalle {
+  """
+  ✨ Implicit foreign key field based on `ComandaDetalle`.`comanda`. It must match the value of `Comanda`.`id`. See `@ref` for how to customize it.
+  """
+  comandaId: UUID! @fdc_generated(from: "ComandaDetalle.comanda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `ComandaDetalle`.`tipoPrenda`. It must match the value of `TipoPrenda`.`id`. See `@ref` for how to customize it.
+  """
+  tipoPrendaId: UUID! @fdc_generated(from: "ComandaDetalle.tipoPrenda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `ComandaDetalle`.`tipoServicio`. It must match the value of `TipoServicio`.`id`. See `@ref` for how to customize it.
+  """
+  tipoServicioId: UUID! @fdc_generated(from: "ComandaDetalle.tipoServicio", purpose: IMPLICIT_REF_FIELD)
+}
+extend type ComandaEtapa {
+  """
+  ✨ Implicit foreign key field based on `ComandaEtapa`.`comanda`. It must match the value of `Comanda`.`id`. See `@ref` for how to customize it.
+  """
+  comandaId: UUID! @fdc_generated(from: "ComandaEtapa.comanda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `ComandaEtapa`.`etapa`. It must match the value of `EtapaProduccion`.`id`. See `@ref` for how to customize it.
+  """
+  etapaId: UUID! @fdc_generated(from: "ComandaEtapa.etapa", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `ComandaEtapa`.`operario`. It must match the value of `Usuario`.`id`. See `@ref` for how to customize it.
+  """
+  operarioId: String @fdc_generated(from: "ComandaEtapa.operario", purpose: IMPLICIT_REF_FIELD)
+}
+extend type ComandaHistorialEstado {
+  """
+  ✨ Implicit foreign key field based on `ComandaHistorialEstado`.`comanda`. It must match the value of `Comanda`.`id`. See `@ref` for how to customize it.
+  """
+  comandaId: UUID! @fdc_generated(from: "ComandaHistorialEstado.comanda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `ComandaHistorialEstado`.`usuario`. It must match the value of `Usuario`.`id`. See `@ref` for how to customize it.
+  """
+  usuarioId: String @fdc_generated(from: "ComandaHistorialEstado.usuario", purpose: IMPLICIT_REF_FIELD)
+}
+extend type MovimientoInventario {
+  """
+  ✨ Implicit foreign key field based on `MovimientoInventario`.`comanda`. It must match the value of `Comanda`.`id`. See `@ref` for how to customize it.
+  """
+  comandaId: UUID @fdc_generated(from: "MovimientoInventario.comanda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `MovimientoInventario`.`insumo`. It must match the value of `Insumo`.`id`. See `@ref` for how to customize it.
+  """
+  insumoId: UUID! @fdc_generated(from: "MovimientoInventario.insumo", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `MovimientoInventario`.`usuario`. It must match the value of `Usuario`.`id`. See `@ref` for how to customize it.
+  """
+  usuarioId: String @fdc_generated(from: "MovimientoInventario.usuario", purpose: IMPLICIT_REF_FIELD)
+}
+extend type PatronConsumo {
+  """
+  ✨ Implicit foreign key field based on `PatronConsumo`.`tipoServicio`. It must match the value of `TipoServicio`.`id`. See `@ref` for how to customize it.
+  """
+  tipoServicioId: UUID! @fdc_generated(from: "PatronConsumo.tipoServicio", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PatronConsumo`.`tipoPrenda`. It must match the value of `TipoPrenda`.`id`. See `@ref` for how to customize it.
+  """
+  tipoPrendaId: UUID! @fdc_generated(from: "PatronConsumo.tipoPrenda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PatronConsumo`.`insumo`. It must match the value of `Insumo`.`id`. See `@ref` for how to customize it.
+  """
+  insumoId: UUID! @fdc_generated(from: "PatronConsumo.insumo", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PatronConsumo`.`modelo`. It must match the value of `ModeloIa`.`id`. See `@ref` for how to customize it.
+  """
+  modeloId: UUID @fdc_generated(from: "PatronConsumo.modelo", purpose: IMPLICIT_REF_FIELD)
+}
+extend type PrediccionInsumo {
+  """
+  ✨ Implicit foreign key field based on `PrediccionInsumo`.`comanda`. It must match the value of `Comanda`.`id`. See `@ref` for how to customize it.
+  """
+  comandaId: UUID @fdc_generated(from: "PrediccionInsumo.comanda", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PrediccionInsumo`.`insumo`. It must match the value of `Insumo`.`id`. See `@ref` for how to customize it.
+  """
+  insumoId: UUID! @fdc_generated(from: "PrediccionInsumo.insumo", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `PrediccionInsumo`.`modelo`. It must match the value of `ModeloIa`.`id`. See `@ref` for how to customize it.
+  """
+  modeloId: UUID! @fdc_generated(from: "PrediccionInsumo.modelo", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Rol {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Rol", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type Usuario {
+  """
+  ✨ Implicit foreign key field based on `Usuario`.`rol`. It must match the value of `Rol`.`id`. See `@ref` for how to customize it.
+  """
+  rolId: UUID! @fdc_generated(from: "Usuario.rol", purpose: IMPLICIT_REF_FIELD)
+}

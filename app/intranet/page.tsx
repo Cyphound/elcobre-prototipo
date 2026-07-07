@@ -16,7 +16,9 @@ import {
   MoreVertical,
 } from "lucide-react";
 import { animate } from "framer-motion";
+import { Loader2 } from "lucide-react";
 import { useUsuarioActualContext } from "@/components/intranet/AuthGuard";
+import { useRoleGuard } from "@/components/intranet/useRoleGuard";
 
 /* ─── Animated counter ─── */
 function AnimatedNumber({
@@ -257,8 +259,17 @@ const item = {
    DASHBOARD PAGE
 ══════════════════════════════════════════════════ */
 export default function DashboardPage() {
+  const permitido = useRoleGuard(["admin"]);
   const usuario = useUsuarioActualContext();
   const primerNombre = usuario?.nombre ?? "Administrador";
+
+  if (!permitido) {
+    return (
+      <div className="flex h-full items-center justify-center py-24">
+        <Loader2 className="w-6 h-6 text-brand-500 animate-spin" />
+      </div>
+    );
+  }
 
   const kpis = [
     {
@@ -359,7 +370,7 @@ export default function DashboardPage() {
         <div>
           <h1 className="text-2xl font-display font-extrabold text-stone-900 dark:text-white">
             Buenos días,{" "}
-            <span className="text-gradient">{primerNombre}</span> 👋
+            <span className="text-gradient">{primerNombre}</span>
           </h1>
           <p className="text-stone-500 dark:text-stone-400 text-sm mt-1 capitalize">
             {new Date().toLocaleDateString("es-CL", {
@@ -396,7 +407,7 @@ export default function DashboardPage() {
               key={kpi.label}
               variants={item}
               whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-4 flex flex-col gap-3 hover:border-brand-300 dark:hover:border-brand-500/20 shadow-sm dark:shadow-none transition-colors cursor-default"
+              className="glass-panel rounded-2xl p-4 flex flex-col gap-3 hover:border-brand-300 dark:hover:border-brand-500/20 shadow-sm dark:shadow-none transition-colors cursor-default"
             >
               <div className="flex items-center justify-between">
                 <div className={`p-2 rounded-xl ${kpi.bg}`}>
@@ -440,7 +451,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25 }}
-          className="lg:col-span-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-5 shadow-sm dark:shadow-none"
+          className="lg:col-span-2 glass-panel rounded-2xl p-5 shadow-sm dark:shadow-none"
         >
           <div className="flex items-start justify-between mb-5">
             <div>
@@ -462,7 +473,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35 }}
-          className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-5 shadow-sm dark:shadow-none"
+          className="glass-panel rounded-2xl p-5 shadow-sm dark:shadow-none"
         >
           <div className="mb-4">
             <h3 className="text-stone-900 dark:text-white font-bold text-sm">Distribución de Servicios</h3>
@@ -479,7 +490,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45 }}
-          className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-5 shadow-sm dark:shadow-none"
+          className="glass-panel rounded-2xl p-5 shadow-sm dark:shadow-none"
         >
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -518,7 +529,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55 }}
-          className="lg:col-span-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-5 shadow-sm dark:shadow-none"
+          className="lg:col-span-2 glass-panel rounded-2xl p-5 shadow-sm dark:shadow-none"
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-stone-900 dark:text-white font-bold text-sm">Pedidos Recientes</h3>

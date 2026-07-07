@@ -22,13 +22,18 @@ import {
   Monitor,
 } from "lucide-react";
 import Image from "next/image";
+import { Loader2 } from "lucide-react";
 import { useTheme, type Theme } from "@/components/providers/ThemeProvider";
+import { useRoleGuard } from "@/components/intranet/useRoleGuard";
+import { useUsuarioActualContext } from "@/components/intranet/AuthGuard";
 
 type Tab = "apariencia" | "empresa" | "perfil" | "notificaciones" | "seguridad";
 
-const tabs: { id: Tab; label: string; icon: React.ElementType }[] = [
+type TabDef = { id: Tab; label: string; icon: React.ElementType; adminOnly?: boolean };
+
+const tabs: TabDef[] = [
   { id: "apariencia", label: "Apariencia", icon: Palette },
-  { id: "empresa", label: "Empresa", icon: Building2 },
+  { id: "empresa", label: "Empresa", icon: Building2, adminOnly: true },
   { id: "perfil", label: "Mi Perfil", icon: User },
   { id: "notificaciones", label: "Notificaciones", icon: Bell },
   { id: "seguridad", label: "Seguridad", icon: Shield },
@@ -140,6 +145,10 @@ function Toggle({
 }
 
 export default function ConfiguracionPage() {
+  const permitido = useRoleGuard(["admin", "recepcionista", "operario"]);
+  const usuario = useUsuarioActualContext();
+  const isAdmin = usuario?.rol.nombre === "admin";
+  const visibleTabs = tabs.filter((t) => !t.adminOnly || isAdmin);
   const [activeTab, setActiveTab] = useState<Tab>("apariencia");
   const [saved, setSaved] = useState(false);
   const [showPass, setShowPass] = useState(false);
@@ -174,6 +183,14 @@ export default function ConfiguracionPage() {
     setTimeout(() => setSaved(false), 2500);
   };
 
+  if (!permitido) {
+    return (
+      <div className="flex h-full items-center justify-center py-24">
+        <Loader2 className="w-6 h-6 text-brand-500 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
       {/* Header */}
@@ -192,7 +209,7 @@ export default function ConfiguracionPage() {
           transition={{ delay: 0.1 }}
           className="lg:w-52 flex lg:flex-col gap-1 flex-row flex-wrap lg:shrink-0"
         >
-          {tabs.map((tab) => {
+          {visibleTabs.map((tab) => {
             const Icon = tab.icon;
             const active = activeTab === tab.id;
             return (
@@ -227,7 +244,7 @@ export default function ConfiguracionPage() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-6 space-y-6"
+                className="glass-panel rounded-2xl p-6 space-y-6"
               >
                 <h2 className="text-stone-900 dark:text-white font-bold">Tema de la Intranet</h2>
                 <p className="text-sm text-stone-500 dark:text-stone-500">
@@ -275,7 +292,7 @@ export default function ConfiguracionPage() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-6 space-y-6"
+                className="glass-panel rounded-2xl p-6 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <h2 className="text-stone-900 dark:text-white font-bold">Información de la Empresa</h2>
@@ -358,7 +375,7 @@ export default function ConfiguracionPage() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-6 space-y-6"
+                className="glass-panel rounded-2xl p-6 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <h2 className="text-stone-900 dark:text-white font-bold">Mi Perfil</h2>
@@ -395,7 +412,7 @@ export default function ConfiguracionPage() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-6 space-y-6"
+                className="glass-panel rounded-2xl p-6 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <h2 className="text-stone-900 dark:text-white font-bold">Preferencias de Notificaciones</h2>
@@ -454,7 +471,7 @@ export default function ConfiguracionPage() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-6 space-y-6"
+                className="glass-panel rounded-2xl p-6 space-y-6"
               >
                 <h2 className="text-stone-900 dark:text-white font-bold">Seguridad y Acceso</h2>
 

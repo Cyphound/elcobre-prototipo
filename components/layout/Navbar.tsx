@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, LogIn, Package, Search, CheckCircle2, Lock, Mail, User, IdCard, Phone, MapPin, AlertCircle } from "lucide-react";
+import { Menu, X, LogIn, Package, CheckCircle2, Lock, Mail, User, IdCard, Phone, MapPin, AlertCircle, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import {
@@ -15,6 +15,7 @@ import { auth, dataConnect } from "@/lib/firebase/client";
 import { getRoles, registrarseComoCliente, getMiPerfil, type GetRolesData } from "@/src/dataconnect-generated";
 import { cleanRut, formatRut, isValidRut, validatePassword } from "@/lib/validators";
 import { mapAuthError } from "@/lib/firebase/errors";
+import { LANDING_POR_ROL, type Rol } from "@/lib/roles";
 
 export default function Navbar() {
   const router = useRouter();
@@ -22,14 +23,30 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   // Modal States
-  const [isTrackingOpen, setIsTrackingOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isTrackingOpen, setIsTrackingOpen] = useState(false);
 
-  // Tracking Form States
+  // Seguimiento (tracking) modal — solo pide el código y redirige al portal
+  // público de seguimiento, donde se muestra el estado real de la comanda.
   const [trackingCode, setTrackingCode] = useState("");
-  const [trackingStatus, setTrackingStatus] = useState<"idle" | "searching" | "result" | "error">("idle");
-  const [trackingResult, setTrackingResult] = useState<any>(null);
   const [trackingError, setTrackingError] = useState("");
+
+  const openTracking = () => {
+    setIsOpen(false);
+    setTrackingCode("");
+    setTrackingError("");
+    setIsTrackingOpen(true);
+  };
+
+  const handleTrackingSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!trackingCode.trim()) {
+      setTrackingError("Por favor ingresa un código de seguimiento.");
+      return;
+    }
+    setIsTrackingOpen(false);
+    router.push(`/seguimiento?codigo=${encodeURIComponent(trackingCode.trim())}`);
+  };
 
   // Auth Form States
   const [authView, setAuthView] = useState<"login" | "register" | "forgot">("login");
@@ -72,9 +89,20 @@ export default function Navbar() {
       .catch(() => setRoles([]));
   }, []);
 
-  // Lock body scroll when any modal is open
+  // Abrir el modal de acceso automáticamente cuando se llega con ?login=1
+  // (usado por el portal público de seguimiento: "Crear cuenta / Iniciar sesión").
   useEffect(() => {
-    if (isTrackingOpen || isLoginOpen) {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("login") === "1") {
+      setIsLoginOpen(true);
+      setAuthView(params.get("registro") === "1" ? "register" : "login");
+    }
+  }, []);
+
+  // Lock body scroll when the modal is open
+  useEffect(() => {
+    if (isLoginOpen || isTrackingOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -82,7 +110,7 @@ export default function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isTrackingOpen, isLoginOpen]);
+  }, [isLoginOpen, isTrackingOpen]);
 
   // Handle scroll header background change
   useEffect(() => {
@@ -96,37 +124,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Simulated Order Tracking
-  const handleTrackingSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setTrackingError("");
-    
-    if (!trackingCode.trim()) {
-      setTrackingError("Por favor ingresa un código de seguimiento.");
-      return;
-    }
-
-    setTrackingStatus("searching");
-
-    setTimeout(() => {
-      const code = trackingCode.trim().toUpperCase();
-      setTrackingResult({
-        code: code.startsWith("COBRE-") ? code : `COBRE-${code}`,
-        client: "Juan Pérez",
-        service: "Lavandería Doméstica y Particular",
-        date: new Date().toLocaleDateString("es-CL"),
-        currentStep: 3, // 1: Recibido, 2: Lavado, 3: Planchado, 4: Listo
-        steps: [
-          { name: "Recibido", date: "24/05/2026 09:00", done: true },
-          { name: "Lavado & Sanitizado", date: "24/05/2026 11:30", done: true },
-          { name: "Sistema de Planchado", date: "En curso...", done: true, active: true },
-          { name: "Listo para Retiro / Entrega", date: "Pendiente", done: false },
-        ],
-      });
-      setTrackingStatus("result");
-    }, 1200);
-  };
 
   // Auth Submission (Firebase Auth + Data Connect)
   const handleAuthSubmit = async (e: React.FormEvent) => {
@@ -144,7 +141,7 @@ export default function Navbar() {
         // SERVER_ONLY: el perfil depende de auth.uid (no hay variables), así que
         // el caché por defecto del SDK devolvería el perfil de la sesión anterior.
         const { data } = await getMiPerfil(dataConnect, { fetchPolicy: QueryFetchPolicy.SERVER_ONLY });
-        const rolNombre = data.usuario?.rol?.nombre;
+        const rolNombre = (data.usuario?.rol?.nombre as Rol) ?? "cliente";
 
         setAuthLoading(false);
         setAuthSuccess(true);
@@ -153,7 +150,8 @@ export default function Navbar() {
           setAuthSuccess(false);
           setAuthEmail("");
           setAuthPassword("");
-          router.push(rolNombre === "admin" ? "/intranet" : "/cuenta");
+          // Cada rol es redirigido automáticamente a su propia vista.
+          router.push(LANDING_POR_ROL[rolNombre] ?? "/cuenta");
         }, 1200);
       } catch (err) {
         setAuthLoading(false);
@@ -296,14 +294,9 @@ export default function Navbar() {
 
               {/* CTAs Group */}
               <div className="flex items-center gap-3">
-                {/* Seguimiento CTA */}
+                {/* Seguimiento CTA → abre el modal de seguimiento */}
                 <button
-                  onClick={() => {
-                    setIsTrackingOpen(true);
-                    setTrackingStatus("idle");
-                    setTrackingCode("");
-                    setTrackingError("");
-                  }}
+                  onClick={openTracking}
                   className="flex items-center justify-center gap-2 bg-white border border-stone-250 text-stone-700 hover:border-stone-400 hover:text-stone-900 px-4 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-all duration-200 hover:scale-[1.02] cursor-pointer"
                 >
                   <Package className="w-4 h-4 text-stone-500" />
@@ -362,13 +355,7 @@ export default function Navbar() {
                 ))}
                 <div className="pt-4 border-t border-stone-100 grid grid-cols-2 gap-3 px-3">
                   <button
-                    onClick={() => {
-                      setIsOpen(false);
-                      setIsTrackingOpen(true);
-                      setTrackingStatus("idle");
-                      setTrackingCode("");
-                      setTrackingError("");
-                    }}
+                    onClick={openTracking}
                     className="flex items-center justify-center gap-2 bg-white border border-stone-250 text-stone-700 py-3 rounded-xl font-bold text-sm shadow-sm"
                   >
                     <Package className="w-4 h-4 text-stone-500" />
@@ -396,10 +383,9 @@ export default function Navbar() {
 
       {/* MODALS SECTION */}
       <AnimatePresence>
-        {/* Tracking Modal */}
+        {/* Tracking Modal — pide el código y lleva al portal de seguimiento */}
         {isTrackingOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -407,16 +393,13 @@ export default function Navbar() {
               onClick={() => setIsTrackingOpen(false)}
               className="absolute inset-0 bg-stone-900/60 backdrop-blur-sm"
             />
-
-            {/* Modal Box */}
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", duration: 0.4 }}
-              className="glass-modal bg-white/70 backdrop-blur-2xl backdrop-saturate-150 rounded-3xl p-6 sm:p-8 w-full max-w-lg border border-white/60 relative z-10 max-h-[90vh] overflow-y-auto"
+              className="glass-modal bg-white/70 backdrop-blur-2xl backdrop-saturate-150 rounded-3xl p-6 sm:p-8 w-full max-w-md border border-white/60 relative z-10"
             >
-              {/* Close Button */}
               <button
                 onClick={() => setIsTrackingOpen(false)}
                 className="absolute top-4 right-4 p-2 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-all"
@@ -437,7 +420,7 @@ export default function Navbar() {
 
                 <form onSubmit={handleTrackingSearch} className="space-y-4">
                   {trackingError && (
-                    <div className="p-3 bg-red-50 border border-red-200 text-red-755 text-xs font-semibold rounded-xl">
+                    <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded-xl">
                       {trackingError}
                     </div>
                   )}
@@ -446,115 +429,28 @@ export default function Navbar() {
                     <div className="relative flex-1">
                       <input
                         type="text"
+                        autoFocus
                         placeholder="Ej: COBRE-1234 o 1234"
                         value={trackingCode}
-                        onChange={(e) => setTrackingCode(e.target.value)}
+                        onChange={(e) => {
+                          setTrackingCode(e.target.value);
+                          if (trackingError) setTrackingError("");
+                        }}
                         className="w-full pl-4 pr-10 py-3.5 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 font-bold placeholder-stone-400 focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm uppercase"
                       />
-                      <Search className="w-4 h-4 text-stone-450 absolute right-3.5 top-1/2 -translate-y-1/2" />
+                      <Search className="w-4 h-4 text-stone-400 absolute right-3.5 top-1/2 -translate-y-1/2" />
                     </div>
                     <button
                       type="submit"
-                      disabled={trackingStatus === "searching"}
                       className="bg-gradient-brand text-white font-bold px-6 rounded-xl text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shrink-0"
                     >
-                      {trackingStatus === "searching" ? (
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      ) : (
-                        "Buscar"
-                      )}
+                      Buscar
                     </button>
                   </div>
+                  <p className="text-[11px] text-stone-400 text-center">
+                    Serás dirigido al portal de seguimiento con el estado de tus prendas.
+                  </p>
                 </form>
-
-                {/* Tracking Results Area */}
-                <AnimatePresence mode="wait">
-                  {trackingStatus === "searching" && (
-                    <motion.div
-                      key="loading"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="py-12 flex flex-col items-center justify-center gap-3"
-                    >
-                      <div className="w-8 h-8 border-3 border-brand-500 border-t-transparent rounded-full animate-spin" />
-                      <p className="text-sm font-semibold text-stone-600">Consultando base de datos...</p>
-                    </motion.div>
-                  )}
-
-                  {trackingStatus === "result" && trackingResult && (
-                    <motion.div
-                      key="result"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="space-y-6 pt-4 border-t border-stone-150"
-                    >
-                      {/* Ticket Header */}
-                      <div className="bg-stone-50 rounded-2xl p-4 border border-stone-200 flex justify-between items-center text-xs">
-                        <div>
-                          <p className="font-bold text-stone-900">{trackingResult.code}</p>
-                          <p className="text-stone-500 mt-0.5">{trackingResult.service}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-stone-500">Fecha Ingreso</p>
-                          <p className="font-semibold text-stone-850 mt-0.5">{trackingResult.date}</p>
-                        </div>
-                      </div>
-
-                      {/* Visual Timeline Progress */}
-                      <div className="space-y-5">
-                        <h4 className="text-xs uppercase font-extrabold tracking-wider text-brand-700">Estado del Lavado</h4>
-                        
-                        <div className="space-y-6 relative pl-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-stone-200">
-                          {trackingResult.steps.map((step: any, sIdx: number) => {
-                            const isDone = step.done;
-                            const isActive = step.active;
-
-                            return (
-                              <div key={sIdx} className="relative flex justify-between items-start">
-                                {/* Timeline Bullet */}
-                                <div
-                                  className={`absolute -left-6 top-1 w-4.5 h-4.5 rounded-full border-2 flex items-center justify-center transition-all ${
-                                    isDone
-                                      ? isActive
-                                        ? "bg-brand-550 border-brand-550 scale-110"
-                                        : "bg-green-500 border-green-500"
-                                      : "bg-white border-stone-300"
-                                  }`}
-                                >
-                                  {isDone && !isActive && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />}
-                                </div>
-
-                                <div className="pl-1">
-                                  <h5
-                                    className={`text-sm font-bold leading-none ${
-                                      isActive
-                                        ? "text-brand-650"
-                                        : isDone
-                                        ? "text-stone-900"
-                                        : "text-stone-400"
-                                    }`}
-                                  >
-                                    {step.name}
-                                  </h5>
-                                  <p className="text-[11px] text-stone-500 mt-1">{step.date}</p>
-                                </div>
-
-                                {isActive && (
-                                  <span className="bg-brand-50 border border-brand-200 text-brand-700 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full animate-pulse">
-                                    En Proceso
-                                  </span>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
             </motion.div>
           </div>

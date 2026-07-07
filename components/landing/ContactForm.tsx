@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Send, CheckCircle2, Phone, Mail, Clock, ShieldCheck, Building2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import GlassSelect from "@/components/ui/GlassSelect";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -211,20 +212,13 @@ export default function ContactForm() {
                         <label htmlFor="servicio" className="text-xs font-bold uppercase tracking-wider text-stone-600 block">
                           Tipo de Servicio
                         </label>
-                        <select
-                          id="servicio"
-                          name="servicio"
+                        <GlassSelect
                           value={formData.servicio}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-stone-850 font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition-all text-sm appearance-none"
-                        >
-                          <option value="" disabled>Selecciona una opción</option>
-                          {serviceOptions.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                              {opt.label}
-                            </option>
-                          ))}
-                        </select>
+                          onChange={(v) => setFormData({ ...formData, servicio: v })}
+                          ariaLabel="Tipo de servicio"
+                          placeholder="Selecciona una opción"
+                          options={serviceOptions}
+                        />
                       </div>
                     </div>
 

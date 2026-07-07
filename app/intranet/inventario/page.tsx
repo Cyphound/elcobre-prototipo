@@ -12,7 +12,9 @@ import {
   Pencil,
   Trash2,
   Package,
+  Loader2,
 } from "lucide-react";
+import { useRoleGuard } from "@/components/intranet/useRoleGuard";
 
 type StockStatus = "OK" | "Bajo" | "Crítico";
 
@@ -46,8 +48,17 @@ const statusCfg: Record<StockStatus, { bg: string; text: string; icon: React.Ele
 const categories = ["Todos", "Químicos", "Embalaje", "Equipamiento", "Insumos"];
 
 export default function InventarioPage() {
+  const permitido = useRoleGuard(["admin"]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Todos");
+
+  if (!permitido) {
+    return (
+      <div className="flex h-full items-center justify-center py-24">
+        <Loader2 className="w-6 h-6 text-brand-500 animate-spin" />
+      </div>
+    );
+  }
 
   const enriched = inventory.map((item) => ({
     ...item,
@@ -141,7 +152,7 @@ export default function InventarioPage() {
             placeholder="Buscar producto..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-xl text-sm text-stone-700 dark:text-stone-200 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:border-brand-500/50 transition-colors shadow-sm dark:shadow-none"
+            className="w-full pl-9 pr-4 py-2.5 glass-panel rounded-xl text-sm text-stone-700 dark:text-stone-200 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:border-brand-500/50 transition-colors shadow-sm dark:shadow-none"
           />
           <Search className="w-4 h-4 text-stone-400 dark:text-stone-500 absolute left-3 top-1/2 -translate-y-1/2" />
         </div>
@@ -167,7 +178,7 @@ export default function InventarioPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.28 }}
-        className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl overflow-hidden shadow-sm dark:shadow-none"
+        className="glass-panel rounded-2xl overflow-hidden shadow-sm dark:shadow-none"
       >
         <div className="overflow-x-auto">
           <table className="w-full text-xs">

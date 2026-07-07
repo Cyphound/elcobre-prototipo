@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { WashingMachine, Wind, Layers, Cpu, ShieldAlert, Zap } from "lucide-react";
+import { WashingMachine, Wind, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Machinery() {
@@ -10,7 +10,7 @@ export default function Machinery() {
       id: "washers",
       title: "Lavadoras Industriales",
       tagline: "Higiene y dosificación automatizada",
-      description: "Equipos alemanes de última generación con control computarizado de ciclos. Regulan de forma exacta la temperatura, la velocidad de rotación y la dosificación de insumos, eliminando grasa y suciedad extrema sin comprometer la resistencia del tejido.",
+      description: "Equipos industriales de alta tecnología con control avanzado de ciclos. Regulan de forma exacta la temperatura, la velocidad de rotación y la dosificación de insumos, eliminando grasa y suciedad extrema sin comprometer la resistencia del tejido.",
       image: "/images/machinery/machinery-1.webp",
       icon: WashingMachine,
       details: [
@@ -23,11 +23,11 @@ export default function Machinery() {
       id: "dryers",
       title: "Secadoras Eficientes",
       tagline: "Protección de fibras por humedad residual",
-      description: "Sistemas de secado rápido con sensores que miden la humedad del tambor constantemente. Evitan el sobrecalentamiento, reduciendo la fricción estática y prolongando la vida útil de uniformes y prendas del hogar.",
+      description: "Sistemas de secado rápido y eficiente que controlan la humedad del tambor de forma constante. Evitan el sobrecalentamiento, reduciendo la fricción estática y prolongando la vida útil de uniformes y prendas del hogar.",
       image: "/images/machinery/machinery-2.webp",
       icon: Wind,
       details: [
-        { label: "Sensores SmartDry", text: "Apagado automático al alcanzar la humedad exacta." },
+        { label: "Secado Inteligente", text: "Apagado automático al alcanzar la humedad exacta." },
         { label: "Rotación Reversible", text: "Evita enredos y arrugas profundas durante el secado." }
       ],
       color: "from-orange-500/10 to-copper-600/10"
@@ -148,37 +148,6 @@ export default function Machinery() {
             );
           })}
         </div>
-
-        {/* Stats Summary Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-20 md:mt-28 bg-gradient-brand rounded-3xl p-8 md:p-12 text-white shadow-xl grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-        >
-          <div className="space-y-2">
-            <div className="inline-flex p-3 bg-white/10 rounded-2xl mb-1">
-              <Cpu className="w-6 h-6 text-white" />
-            </div>
-            <h4 className="text-3xl font-extrabold">100%</h4>
-            <p className="text-sm text-brand-100">Procesos Automatizados</p>
-          </div>
-          <div className="space-y-2 border-t md:border-t-0 md:border-x border-white/20 pt-6 md:pt-0">
-            <div className="inline-flex p-3 bg-white/10 rounded-2xl mb-1">
-              <ShieldAlert className="w-6 h-6 text-white" />
-            </div>
-            <h4 className="text-3xl font-extrabold">BioSafe</h4>
-            <p className="text-sm text-brand-100">Sanitización e Higiene Certificada</p>
-          </div>
-          <div className="space-y-2 border-t md:border-t-0 pt-6 md:pt-0">
-            <div className="inline-flex p-3 bg-white/10 rounded-2xl mb-1">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
-            <h4 className="text-3xl font-extrabold">EcoFriendly</h4>
-            <p className="text-sm text-brand-100">Ahorro de Agua y Detergentes Biodegradables</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

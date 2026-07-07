@@ -35,6 +35,8 @@ import {
 import { cleanRut, formatRut, isValidRut, validatePassword } from "@/lib/validators";
 import { mapAuthError } from "@/lib/firebase/errors";
 import { useUsuarioActualContext } from "@/components/intranet/AuthGuard";
+import { useRoleGuard } from "@/components/intranet/useRoleGuard";
+import GlassSelect from "@/components/ui/GlassSelect";
 
 type Usuario = GetUsuariosData["usuarios"][number];
 type RolOpcion = GetRolesData["rols"][number];
@@ -65,6 +67,7 @@ const emptyForm = {
 type Modal = { mode: "crear" } | { mode: "editar"; usuario: Usuario } | null;
 
 export default function UsuariosPage() {
+  const permitido = useRoleGuard(["admin"]);
   const yo = useUsuarioActualContext();
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [roles, setRoles] = useState<RolOpcion[]>([]);
@@ -215,6 +218,14 @@ export default function UsuariosPage() {
     await cargarUsuarios();
   };
 
+  if (!permitido) {
+    return (
+      <div className="flex h-full items-center justify-center py-24">
+        <Loader2 className="w-6 h-6 text-brand-500 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
       {/* Header */}
@@ -262,7 +273,7 @@ export default function UsuariosPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 + i * 0.06 }}
-                  className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-4"
+                  className="glass-panel rounded-2xl p-4"
                 >
                   <p className={`text-2xl font-display font-extrabold ${rc.text}`}>{count}</p>
                   <p className="text-stone-500 dark:text-stone-500 text-xs mt-1 capitalize">{rol.nombre}</p>
@@ -335,7 +346,7 @@ export default function UsuariosPage() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ delay: i * 0.06 }}
                     whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                    className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/5 rounded-2xl p-5 hover:border-brand-500/30 dark:hover:border-brand-500/20 transition-colors group"
+                    className="glass-panel rounded-2xl p-5 hover:border-brand-500/30 dark:hover:border-brand-500/20 transition-colors group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
@@ -428,8 +439,8 @@ export default function UsuariosPage() {
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 w-full max-w-lg relative z-10 max-h-[90vh] overflow-y-auto"
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-panel rounded-3xl p-6 sm:p-8 w-full max-w-lg relative z-10 max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={closeModal}
@@ -457,21 +468,17 @@ export default function UsuariosPage() {
                 )}
 
                 <Field label="Tipo de Usuario">
-                  <div className="relative">
-                    <select
-                      value={form.rolId}
-                      onChange={(e) => setForm({ ...form, rolId: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 dark:border-white/10 bg-stone-50 dark:bg-stone-800 text-stone-800 dark:text-stone-200 focus:outline-none focus:border-brand-500 transition-all text-sm font-medium appearance-none"
-                    >
-                      <option value="">Selecciona un rol</option>
-                      {roles.map((r) => (
-                        <option key={r.id} value={r.id}>
-                          {r.nombre.charAt(0).toUpperCase() + r.nombre.slice(1)}
-                        </option>
-                      ))}
-                    </select>
-                    <UserCog className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  </div>
+                  <GlassSelect
+                    value={form.rolId}
+                    onChange={(v) => setForm({ ...form, rolId: v })}
+                    icon={UserCog}
+                    ariaLabel="Tipo de usuario"
+                    placeholder="Selecciona un rol"
+                    options={roles.map((r) => ({
+                      value: r.id,
+                      label: r.nombre.charAt(0).toUpperCase() + r.nombre.slice(1),
+                    }))}
+                  />
                 </Field>
 
                 <div className="grid grid-cols-2 gap-3">

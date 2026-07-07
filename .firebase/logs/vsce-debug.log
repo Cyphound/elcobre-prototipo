@@ -40,3 +40,5 @@ I0618 10:53:43.218590   13716 dev.go:104] Listening on address (HTTP + gRPC): 12
 [debug] [2026-06-18T14:53:45.601Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
 [debug] [2026-06-18T14:53:46.980Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
 [debug] [2026-06-18T14:53:46.981Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] !  SQL Connect Emulator has exited upon receiving signal: SIGINT 

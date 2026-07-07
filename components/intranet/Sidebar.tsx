@@ -5,12 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  LayoutDashboard,
-  ClipboardList,
-  Package,
-  Archive,
-  Users,
-  Settings,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -22,15 +16,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
 import { useUsuarioActualContext } from "@/components/intranet/AuthGuard";
+import { NAV_POR_ROL, type NavItem, type Rol } from "@/lib/roles";
 
-const navItems = [
-  { href: "/intranet", label: "Dashboard", icon: LayoutDashboard, exact: true },
-  { href: "/intranet/comandas", label: "Comandas", icon: ClipboardList, badge: 5 },
-  { href: "/intranet/seguimiento", label: "Seguimiento", icon: Package, badge: 23 },
-  { href: "/intranet/inventario", label: "Inventario", icon: Archive },
-  { href: "/intranet/usuarios", label: "Usuarios", icon: Users },
-  { href: "/intranet/configuracion", label: "Configuración", icon: Settings },
-];
+const rolLabel: Record<Rol, string> = {
+  admin: "Administrador",
+  recepcionista: "Recepcionista",
+  operario: "Operario",
+  cliente: "Cliente",
+};
 
 export default function IntranetSidebar() {
   const pathname = usePathname();
@@ -39,8 +32,19 @@ export default function IntranetSidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const usuario = useUsuarioActualContext();
 
+  const rol = (usuario?.rol.nombre as Rol) ?? "admin";
+  const navItems: NavItem[] = NAV_POR_ROL[rol as Exclude<Rol, "cliente">] ?? NAV_POR_ROL.admin;
+
   const nombreCompleto = usuario ? `${usuario.nombre} ${usuario.apellido ?? ""}`.trim() : "Usuario";
   const inicial = usuario?.nombre?.charAt(0).toUpperCase() ?? "U";
+
+  // Previsualización de la última notificación (mock — aún sin backend).
+  const ultimaNotif = {
+    total: 3,
+    titulo: "Nuevo pedido recibido",
+    detalle: "Comanda #COBRE-2848",
+    tiempo: "hace 3 min",
+  };
 
   const isActive = (item: (typeof navItems)[0]) => {
     if (item.exact) return pathname === item.href;
@@ -158,47 +162,66 @@ export default function IntranetSidebar() {
         })}
       </nav>
 
+      {/* Notificaciones — tarjeta con previsualización de la última */}
+      <AnimatePresence>
+        {(!collapsed || isMobile) && (
+          <motion.button
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            className="mx-3 mb-1 block text-left relative overflow-hidden rounded-2xl bg-white/60 dark:bg-white/5 border border-stone-200/70 dark:border-white/5 backdrop-blur-sm p-3.5 hover:border-brand-300 dark:hover:border-brand-500/25 transition-colors cursor-pointer"
+            style={{ width: "calc(100% - 1.5rem)" }}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <div className="relative w-7 h-7 rounded-lg bg-brand-500/12 grid place-items-center text-brand-600 dark:text-brand-400">
+                  <Bell className="w-3.5 h-3.5" />
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-brand-500 rounded-full ring-2 ring-white dark:ring-stone-950" />
+                </div>
+                <span className="text-xs font-bold text-stone-800 dark:text-white">Notificaciones</span>
+              </div>
+              <span className="bg-brand-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                {ultimaNotif.total}
+              </span>
+            </div>
+            <p className="text-[11px] font-semibold text-stone-700 dark:text-stone-200 truncate">
+              {ultimaNotif.titulo}
+            </p>
+            <p className="text-[10px] text-stone-400 dark:text-stone-500 truncate mt-0.5">
+              {ultimaNotif.detalle} · {ultimaNotif.tiempo}
+            </p>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
       {/* Bottom Section */}
       <div className="p-3 border-t border-stone-200 dark:border-white/5 space-y-1">
-        <button className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-white/5 hover:text-stone-900 dark:hover:text-stone-200 transition-all duration-200">
-          <Bell className="w-[18px] h-[18px] shrink-0" />
-          <AnimatePresence>
-            {(!collapsed || isMobile) && (
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-sm font-semibold flex-1 text-left whitespace-nowrap"
-              >
-                Notificaciones
-              </motion.span>
-            )}
-          </AnimatePresence>
-          {(!collapsed || isMobile) && (
-            <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
-              3
-            </span>
-          )}
-        </button>
+        {/* Acceso rápido a notificaciones cuando la barra está colapsada */}
+        {collapsed && !isMobile && (
+          <button
+            title="Notificaciones"
+            className="relative flex items-center justify-center w-full px-3 py-2.5 rounded-xl text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-white/5 hover:text-stone-900 dark:hover:text-stone-200 transition-all duration-200"
+          >
+            <Bell className="w-[18px] h-[18px] shrink-0" />
+            <span className="absolute top-1.5 right-3.5 w-2 h-2 bg-brand-500 rounded-full" />
+          </button>
+        )}
 
-        <AnimatePresence>
-          {(!collapsed || isMobile) && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex items-center gap-2.5 px-3 py-2.5 bg-stone-100 dark:bg-white/5 rounded-xl"
-            >
-              <div className="w-7 h-7 rounded-full bg-gradient-brand flex items-center justify-center text-white text-xs font-bold shrink-0">
-                {inicial}
-              </div>
-              <div className="overflow-hidden min-w-0">
-                <p className="text-stone-900 dark:text-white text-xs font-bold truncate">{nombreCompleto}</p>
-                <p className="text-stone-500 text-[10px] truncate">{usuario?.email}</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* La identidad del usuario vive en la barra superior en escritorio; aquí
+            sólo se muestra dentro del cajón móvil (donde la topbar está oculta). */}
+        {isMobile && (
+          <div className="flex items-center gap-2.5 px-3 py-2.5 bg-stone-100 dark:bg-white/5 rounded-xl">
+            <div className="w-7 h-7 rounded-full bg-gradient-brand flex items-center justify-center text-white text-xs font-bold shrink-0">
+              {inicial}
+            </div>
+            <div className="overflow-hidden min-w-0">
+              <p className="text-stone-900 dark:text-white text-xs font-bold truncate">{nombreCompleto}</p>
+              <p className="text-brand-500 dark:text-brand-400 text-[10px] font-semibold truncate">
+                {rolLabel[rol]}
+              </p>
+            </div>
+          </div>
+        )}
 
         <button
           onClick={() => signOut(auth).then(() => router.push("/"))}
@@ -228,7 +251,7 @@ export default function IntranetSidebar() {
       <motion.aside
         animate={{ width: collapsed ? 72 : 248 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
-        className="relative hidden lg:flex flex-col bg-white dark:bg-stone-950 border-r border-stone-200 dark:border-white/5 h-screen sticky top-0 shrink-0 z-40"
+        className="relative hidden lg:flex flex-col glass-shell border-r border-stone-200/70 dark:border-white/5 h-screen sticky top-0 shrink-0 z-40"
       >
         {/* Collapse Toggle */}
         <button
@@ -246,7 +269,7 @@ export default function IntranetSidebar() {
       </motion.aside>
 
       {/* Mobile Topbar trigger */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-stone-950 border-b border-stone-200 dark:border-white/5 px-4 py-3 flex items-center gap-3">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 glass-shell border-b border-stone-200/70 dark:border-white/5 px-4 py-3 flex items-center gap-3">
         <button
           onClick={() => setMobileOpen(true)}
           className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
@@ -275,7 +298,7 @@ export default function IntranetSidebar() {
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-[260px] bg-white dark:bg-stone-950 border-r border-stone-200 dark:border-white/5 flex flex-col"
+              className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-[260px] glass-shell border-r border-stone-200/70 dark:border-white/5 flex flex-col"
             >
               <SidebarContent isMobile />
             </motion.aside>

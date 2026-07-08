@@ -245,6 +245,20 @@ const statusCfg: Record<string, { bg: string; text: string; dot: string }> = {
   Pendiente: { bg: "bg-amber-500/15", text: "text-amber-600 dark:text-amber-400", dot: "bg-amber-400" },
 };
 
+/* ─── Horario de atención ─── */
+const HORARIO = {
+  semana: { desde: 8 * 60, hasta: 20 * 60 }, // Lun–Vie 8:00 – 20:00
+  sabado: { desde: 9 * 60, hasta: 14 * 60 }, // Sáb 9:00 – 14:00
+};
+
+function lavanderiaAbierta(now: Date): boolean {
+  const dia = now.getDay(); // 0 dom … 6 sáb
+  const min = now.getHours() * 60 + now.getMinutes();
+  if (dia >= 1 && dia <= 5) return min >= HORARIO.semana.desde && min < HORARIO.semana.hasta;
+  if (dia === 6) return min >= HORARIO.sabado.desde && min < HORARIO.sabado.hasta;
+  return false;
+}
+
 /* ─── Stagger helpers ─── */
 const container = {
   hidden: { opacity: 0 },
@@ -262,6 +276,16 @@ export default function DashboardPage() {
   const permitido = useRoleGuard(["admin"]);
   const usuario = useUsuarioActualContext();
   const primerNombre = usuario?.nombre ?? "Administrador";
+
+  // Hora local para determinar si la lavandería está abierta. Se refresca cada
+  // minuto para que el estado cambie al cruzar los límites de horario.
+  const [ahora, setAhora] = useState<Date | null>(null);
+  useEffect(() => {
+    setAhora(new Date());
+    const id = setInterval(() => setAhora(new Date()), 60_000);
+    return () => clearInterval(id);
+  }, []);
+  const abierta = ahora ? lavanderiaAbierta(ahora) : false;
 
   if (!permitido) {
     return (
@@ -359,7 +383,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       {/* ── Header ── */}
       <motion.div
         initial={{ opacity: 0, y: -12 }}
@@ -385,11 +409,30 @@ export default function DashboardPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 px-4 py-2.5 rounded-xl self-start sm:self-auto"
+          title={"Lunes a Viernes: 8:00 - 20:00\nSábados: 9:00 - 14:00"}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border self-start sm:self-auto cursor-default ${
+            abierta
+              ? "bg-green-500/10 border-green-500/20"
+              : "bg-red-500/10 border-red-500/20"
+          }`}
         >
-          <Flame className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-          <span className="text-sm font-bold text-brand-700 dark:text-brand-300">Operación activa</span>
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+          {abierta ? (
+            <Flame className="w-4 h-4 text-green-600 dark:text-green-400" />
+          ) : (
+            <Clock className="w-4 h-4 text-red-600 dark:text-red-400" />
+          )}
+          <span
+            className={`text-sm font-bold ${
+              abierta ? "text-green-700 dark:text-green-300" : "text-red-700 dark:text-red-300"
+            }`}
+          >
+            {abierta ? "Lavandería abierta" : "Cerrada"}
+          </span>
+          <div
+            className={`w-2 h-2 rounded-full ${
+              abierta ? "bg-green-400 animate-pulse" : "bg-red-500"
+            }`}
+          />
         </motion.div>
       </motion.div>
 

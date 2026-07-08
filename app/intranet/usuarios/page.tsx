@@ -227,7 +227,7 @@ export default function UsuariosPage() {
   }
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}

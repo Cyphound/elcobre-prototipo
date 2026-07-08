@@ -77,7 +77,7 @@ export default function ReportesPage() {
   const totalPrendas = facturables.reduce((s, c) => s + prendasTotales(c), 0);
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>

@@ -173,7 +173,7 @@ export default function ComandasPage() {
   const formTotal = formData.detalle.reduce((s, d) => s + d.cantidad * d.precioUnitario, 0);
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -281,8 +281,8 @@ export default function ComandasPage() {
               </tr>
             </thead>
             <tbody>
-              <AnimatePresence mode="popLayout">
-                {filtered.map((c, i) => {
+              <AnimatePresence initial={false}>
+                {filtered.map((c) => {
                   const sc = estadoConfig[c.estado];
                   return (
                     <motion.tr
@@ -290,7 +290,7 @@ export default function ComandasPage() {
                       initial={{ opacity: 0, x: -8 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 8 }}
-                      transition={{ delay: i * 0.03 }}
+                      transition={{ duration: 0.18 }}
                       className="border-b border-stone-100 dark:border-white/5 last:border-0 hover:bg-stone-50 dark:hover:bg-white/2 transition-colors group cursor-pointer"
                       onClick={() => setDetalle(c)}
                     >
@@ -383,7 +383,7 @@ export default function ComandasPage() {
               </h3>
 
               <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <FieldInput label="Cliente" value={formData.cliente} onChange={(v) => setFormData({ ...formData, cliente: v })} placeholder="Nombre del cliente" />
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Tipo</label>
@@ -398,7 +398,7 @@ export default function ComandasPage() {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <FieldInput label="Teléfono" value={formData.telefono} onChange={(v) => setFormData({ ...formData, telefono: v })} placeholder="+56 9 ..." />
                   <FieldInput label="Correo" value={formData.email} onChange={(v) => setFormData({ ...formData, email: v })} placeholder="correo@ejemplo.com" />
                 </div>

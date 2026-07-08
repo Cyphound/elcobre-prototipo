@@ -83,7 +83,7 @@ export default function ContactForm() {
             <div className="space-y-4">
               <h4 className="text-2xl font-extrabold text-stone-900">¿Listo para comenzar o tienes alguna duda?</h4>
               <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-                Nuestros ejecutivos comerciales responderán tu solicitud a la brevedad. Brindamos servicios rápidos y profesionales adaptados a las exigencias operativas de tu empresa o la comodidad de tu hogar.
+                Responderemos tu solicitud a la brevedad. Brindamos servicios rápidos y profesionales adaptados a las exigencias operativas de tu empresa o la comodidad de tu hogar.
               </p>
             </div>
 
@@ -95,22 +95,22 @@ export default function ContactForm() {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h5 className="text-sm font-bold text-stone-900">Respuesta Comercial Rápida</h5>
+                  <h5 className="text-sm font-bold text-stone-900">Respuesta Rápida</h5>
                   <p className="text-xs text-stone-500 mt-1 leading-relaxed">
-                    Respondemos en menos de 2 horas hábiles para cotizaciones corporativas y solicitudes del hogar.
+                    Respondemos en menos de 2 días hábiles para cotizaciones corporativas y solicitudes del hogar.
                   </p>
                 </div>
               </div>
 
-              {/* Minera support */}
+              {/* Hoteles support */}
               <div className="flex items-start gap-4 p-5 glass-card bg-white/55 backdrop-blur-lg rounded-2xl shadow-premium">
                 <div className="p-3 bg-brand-50 text-brand-600 rounded-xl shrink-0">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h5 className="text-sm font-bold text-stone-900">Convenios y Contratos Faena</h5>
+                  <h5 className="text-sm font-bold text-stone-900">Convenios y Contratos Hoteleros</h5>
                   <p className="text-xs text-stone-500 mt-1 leading-relaxed">
-                    Especialistas en lavado técnico de overoles, ropa térmica y EPP bajo normas de sanitización e higiene.
+                    Especialistas en lavado industrial y corporativo, con experiencia en convenios para hoteles, restaurantes y empresas mineras.
                   </p>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function ContactForm() {
                       <textarea
                         id="mensaje"
                         name="mensaje"
-                        rows={4}
+                        rows={6}
                         value={formData.mensaje}
                         onChange={handleChange}
                         placeholder="Escribe aquí los detalles, volumen de prendas, o consultas sobre nuestros convenios corporativos..."

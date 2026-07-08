@@ -17,7 +17,7 @@ export default function Hero() {
     <section
       id="inicio"
       ref={containerRef}
-      className="relative overflow-hidden bg-gradient-light h-screen min-h-[600px] lg:h-screen lg:min-h-0 lg:max-h-screen lg:overflow-hidden flex items-center pt-16 pb-0 lg:pt-0 lg:pb-0"
+      className="relative overflow-hidden bg-gradient-light min-h-screen lg:h-screen lg:min-h-0 lg:max-h-screen lg:overflow-hidden flex items-start lg:items-center pt-28 pb-16 sm:pt-32 lg:pt-0 lg:pb-0"
     >
       {/* Decorative background grid and blurs */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-60" />

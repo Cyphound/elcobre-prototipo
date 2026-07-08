@@ -99,7 +99,7 @@ export default function Reception() {
               </h3>
               <div className="h-1 w-20 bg-brand-500 rounded-full mt-2" />
               <p className="text-stone-600 text-base max-w-xl leading-relaxed">
-                Visítanos en nuestra sucursal central para entregar tus prendas personalmente. Contamos con estacionamiento y una recepción rápida pensada en tu comodidad.
+                Visítanos en nuestra sucursal central para entregar tus prendas personalmente. Contamos con una recepción rápida pensada en tu comodidad.
               </p>
             </div>
 

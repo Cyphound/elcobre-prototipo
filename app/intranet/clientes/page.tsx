@@ -63,7 +63,7 @@ export default function ClientesPage() {
   }
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-2xl font-display font-extrabold text-stone-900 dark:text-white">Clientes</h1>
         <p className="text-stone-500 dark:text-stone-400 text-sm mt-1">{clientes.length} clientes registrados</p>

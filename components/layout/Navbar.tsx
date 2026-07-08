@@ -340,9 +340,9 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-white/75 backdrop-blur-xl border-b border-brand-500/10 shadow-lg"
+              className="md:hidden glass-nav bg-white/60 backdrop-blur-2xl backdrop-saturate-150 border-b border-brand-500/12 overflow-hidden"
             >
-              <div className="px-4 pt-2 pb-6 space-y-3 sm:px-3 shadow-lg">
+              <div className="px-4 pt-2 pb-6 space-y-3 sm:px-3">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}

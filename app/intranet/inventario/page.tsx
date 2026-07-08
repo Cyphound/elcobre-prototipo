@@ -77,7 +77,7 @@ export default function InventarioPage() {
   const totalValue = enriched.reduce((s, i) => s + i.stock * i.cost, 0);
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}

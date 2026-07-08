@@ -42,3 +42,56 @@ I0618 10:53:43.218590   13716 dev.go:104] Listening on address (HTTP + gRPC): 12
 [debug] [2026-06-18T14:53:46.981Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
 [info] [Firebase Plugin] Stopping SQL Connect toolkit
 [warn] !  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-07-08T21:03:11.641Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-07-08T21:03:17.612Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-07-08T21:03:17.616Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-08T21:03:17.616Z] > authorizing via signed-in user (geometry257@gmail.com)
+[debug] [2026-07-08T21:03:17.620Z] Checked if tokens are valid: false, expires at: 1783471572051
+[debug] [2026-07-08T21:03:17.620Z] Checked if tokens are valid: false, expires at: 1783471572051
+[debug] [2026-07-08T21:03:17.620Z] > refreshing access token with scopes: []
+[debug] [2026-07-08T21:03:17.622Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-07-08T21:03:17.622Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-08T21:03:17.648Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.11) on port 50001
+[info] i  dataconnect: downloading dataconnect-emulator-3.4.11.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-3.4.11.exe..."}}
+[debug] [2026-07-08T21:03:26.950Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.11 
+[debug] [2026-07-08T21:03:28.935Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.11 200
+[debug] [2026-07-08T21:03:28.935Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-amd64-v3.4.11 [stream]
+[debug] [2026-07-08T21:03:29.559Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-07-08T21:03:29.559Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-08T21:03:29.590Z] [Firebase Plugin] User found:  geometry257@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-07-08T21:03:29.591Z] Checked if tokens are valid: true, expires at: 1783548208560
+[debug] [2026-07-08T21:03:29.592Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-07-08T21:03:31.005Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-07-08T21:03:31.006Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  dataconnect: Removing outdated emulator files: dataconnect-emulator-3.4.10.exe {"metadata":{"emulator":{"name":"dataconnect"},"message":"Removing outdated emulator files: dataconnect-emulator-3.4.10.exe"}}
+[debug] [2026-07-08T21:03:35.637Z] I0708 17:03:35.480866   23136 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre d079] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1934B] example\queries.gql [1241B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.480866   23136 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre d079] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [9360B] \nConnector \"example\": sources: example\\mutations.gql [1934B] example\\queries.gql [1241B] \n"}}
+[debug] [2026-07-08T21:03:35.638Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-07-08T21:03:35.638Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-07-08T21:03:35.638Z] Starting SQL Connect Emulator with command {"binary":"C:\\Users\\Bayron\\.cache\\firebase\\emulators\\dataconnect-emulator-3.4.11.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=c:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\Bayron\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-3.4.11.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=c:\\\\Users\\\\Bayron\\\\Documents\\\\lavanderia-el-cobre\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2026-07-08T21:03:35.724Z] I0708 17:03:35.683703    5816 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.683703    5816 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-07-08T21:03:35.786Z] I0708 17:03:35.785223    5816 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 8e0b] UpdateResources(): done
+Main schema: sources: schema\schema.gql [9360B] 
+Connector "example": sources: example\mutations.gql [1934B] example\queries.gql [1241B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.785223    5816 control.go:100] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 8e0b] UpdateResources(): done\nMain schema: sources: schema\\schema.gql [9360B] \nConnector \"example\": sources: example\\mutations.gql [1934B] example\\queries.gql [1241B] \n"}}
+[debug] [2026-07-08T21:03:35.851Z] I0708 17:03:35.850106    5816 codegen.go:101] [connector "example" javascriptSdk] Generating sources into "c:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.850106    5816 codegen.go:101] [connector \"example\" javascriptSdk] Generating sources into \"c:\\\\Users\\\\Bayron\\\\Documents\\\\lavanderia-el-cobre\\\\src\\\\dataconnect-generated\"\n"}}
+[debug] [2026-07-08T21:03:35.874Z] I0708 17:03:35.872901    5816 collector.go:107] schema extensions wrote into "c:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [84995B] main\relation.gql [99720B] main\query.gql [22313B] main\mutation.gql [60888B] main\implicit.gql [7019B] main\input.gql [215503B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.872901    5816 collector.go:107] schema extensions wrote into \"c:\\\\Users\\\\Bayron\\\\Documents\\\\lavanderia-el-cobre\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [84995B] main\\relation.gql [99720B] main\\query.gql [22313B] main\\mutation.gql [60888B] main\\implicit.gql [7019B] main\\input.gql [215503B] \n"}}
+[debug] [2026-07-08T21:03:35.893Z] I0708 17:03:35.888122    5816 collector.go:107] connector "example" javascriptSdk wrote into "c:\\Users\\Bayron\\Documents\\lavanderia-el-cobre\\src\\dataconnect-generated"
+Generated sources: esm\index.esm.js [3567B] esm\package.json [17B] react\index.d.ts [2860B] react\package.json [460B] react\index.cjs.js [2364B] react\README.md [36704B] index.cjs.js [3956B] package.json [853B] README.md [30417B] react\esm\index.esm.js [2234B] .guides/setup.md [1682B] .guides/usage.md [2794B] .guides/config.json [236B] index.d.ts [7637B] react\esm\package.json [17B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.888122    5816 collector.go:107] connector \"example\" javascriptSdk wrote into \"c:\\\\Users\\\\Bayron\\\\Documents\\\\lavanderia-el-cobre\\\\src\\\\dataconnect-generated\"\nGenerated sources: esm\\index.esm.js [3567B] esm\\package.json [17B] react\\index.d.ts [2860B] react\\package.json [460B] react\\index.cjs.js [2364B] react\\README.md [36704B] index.cjs.js [3956B] package.json [853B] README.md [30417B] react\\esm\\index.esm.js [2234B] .guides/setup.md [1682B] .guides/usage.md [2794B] .guides/config.json [236B] index.d.ts [7637B] react\\esm\\package.json [17B] \n"}}
+[debug] [2026-07-08T21:03:35.937Z] I0708 17:03:35.936436    5816 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0708 17:03:35.936436    5816 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.936436    5816 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation\nI0708 17:03:35.936436    5816 load.go:109] Finished reloading\n"}}
+[debug] [2026-07-08T21:03:35.960Z] I0708 17:03:35.956596    5816 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:35.956596    5816 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-07-08T21:03:36.164Z] I0708 17:03:36.162819    5816 engine.go:209] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 8e0b] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 17:03:36.162819    5816 engine.go:209] [projects/emulator/locations/emulator/services/lavanderia-el-cobre 8e0b] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}

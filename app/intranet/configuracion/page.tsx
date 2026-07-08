@@ -33,7 +33,6 @@ type TabDef = { id: Tab; label: string; icon: React.ElementType; adminOnly?: boo
 
 const tabs: TabDef[] = [
   { id: "apariencia", label: "Apariencia", icon: Palette },
-  { id: "empresa", label: "Empresa", icon: Building2, adminOnly: true },
   { id: "perfil", label: "Mi Perfil", icon: User },
   { id: "notificaciones", label: "Notificaciones", icon: Bell },
   { id: "seguridad", label: "Seguridad", icon: Shield },
@@ -192,7 +191,7 @@ export default function ConfiguracionPage() {
   }
 
   return (
-    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-6 space-y-6">
+    <div className="min-h-screen text-stone-900 dark:text-stone-100 p-4 sm:p-6 space-y-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-2xl font-display font-extrabold text-stone-900 dark:text-white">Configuración</h1>
@@ -281,89 +280,6 @@ export default function ConfiguracionPage() {
                       </button>
                     );
                   })}
-                </div>
-              </motion.div>
-            )}
-
-            {/* EMPRESA */}
-            {activeTab === "empresa" && (
-              <motion.div
-                key="empresa"
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                className="glass-panel rounded-2xl p-6 space-y-6"
-              >
-                <div className="flex items-center justify-between">
-                  <h2 className="text-stone-900 dark:text-white font-bold">Información de la Empresa</h2>
-                  <SaveButton onClick={handleSave} saved={saved} />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <InputField
-                    label="Nombre de la empresa"
-                    value={empresa.nombre}
-                    onChange={(v) => setEmpresa({ ...empresa, nombre: v })}
-                    icon={Building2}
-                  />
-                  <InputField
-                    label="RUT"
-                    value={empresa.rut}
-                    onChange={(v) => setEmpresa({ ...empresa, rut: v })}
-                  />
-                  <InputField
-                    label="Dirección"
-                    value={empresa.direccion}
-                    onChange={(v) => setEmpresa({ ...empresa, direccion: v })}
-                    icon={MapPin}
-                  />
-                  <InputField
-                    label="Teléfono"
-                    value={empresa.telefono}
-                    onChange={(v) => setEmpresa({ ...empresa, telefono: v })}
-                    icon={Phone}
-                  />
-                  <InputField
-                    label="Correo de contacto"
-                    value={empresa.email}
-                    onChange={(v) => setEmpresa({ ...empresa, email: v })}
-                    icon={Mail}
-                  />
-                  <InputField
-                    label="Sitio web"
-                    value={empresa.web}
-                    onChange={(v) => setEmpresa({ ...empresa, web: v })}
-                    icon={Globe}
-                  />
-                  <InputField
-                    label="Horario de atención"
-                    value={empresa.horario}
-                    onChange={(v) => setEmpresa({ ...empresa, horario: v })}
-                    icon={Clock}
-                  />
-                  <InputField
-                    label="Región"
-                    value={empresa.region}
-                    onChange={(v) => setEmpresa({ ...empresa, region: v })}
-                  />
-                </div>
-
-                {/* Logo section */}
-                <div className="pt-4 border-t border-stone-100 dark:border-white/5">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-500 mb-3">
-                    Logotipo
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-stone-100 dark:bg-stone-800 rounded-2xl border border-stone-200 dark:border-white/5 flex items-center justify-center overflow-hidden">
-                      <Image src="/logo.webp" alt="Logo" width={48} height={48} className="w-12 h-12 object-contain" />
-                    </div>
-                    <div>
-                      <button className="px-4 py-2 bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-white/10 text-stone-600 dark:text-stone-300 rounded-xl text-xs font-bold hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors cursor-pointer">
-                        Cambiar logo
-                      </button>
-                      <p className="text-stone-400 dark:text-stone-600 text-[10px] mt-1">PNG o WebP · máx 2 MB</p>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             )}

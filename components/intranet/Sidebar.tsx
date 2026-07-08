@@ -51,7 +51,7 @@ export default function IntranetSidebar() {
     return pathname.startsWith(item.href);
   };
 
-  const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => (
+  const renderSidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => (
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="flex items-center gap-3 p-5 pb-5 border-b border-stone-200 dark:border-white/5">
@@ -265,7 +265,7 @@ export default function IntranetSidebar() {
           )}
         </button>
 
-        <SidebarContent />
+        {renderSidebarContent({})}
       </motion.aside>
 
       {/* Mobile Topbar trigger */}
@@ -300,7 +300,7 @@ export default function IntranetSidebar() {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-[260px] glass-shell border-r border-stone-200/70 dark:border-white/5 flex flex-col"
             >
-              <SidebarContent isMobile />
+              {renderSidebarContent({ isMobile: true })}
             </motion.aside>
           </>
         )}

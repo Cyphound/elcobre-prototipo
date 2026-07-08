@@ -31,6 +31,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     applyTheme(theme);
   }, [theme]);
 
+  // El ThemeProvider solo envuelve la intranet. Al desmontarse (salir al
+  // landing) quitamos la clase `dark` del <html> para que el tema oscuro no
+  // se filtre a las páginas públicas, que sí usan variantes `dark:`.
+  useEffect(() => {
+    return () => {
+      document.documentElement.classList.remove("dark");
+    };
+  }, []);
+
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const handleSystemChange = () => {

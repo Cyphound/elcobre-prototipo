@@ -52,7 +52,7 @@ export default function Footer() {
               />
               <span className="text-lg font-extrabold tracking-tight text-stone-900 font-display flex gap-1 leading-none">
                 <span>Lavandería</span>
-                <span className="text-brand-500">El Cobre</span>
+                <span className="text-brand-700">El Cobre</span>
               </span>
             </div>
             <p className="text-stone-600 text-sm max-w-sm leading-relaxed">

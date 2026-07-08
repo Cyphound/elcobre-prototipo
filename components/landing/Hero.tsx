@@ -95,7 +95,7 @@ export default function Hero() {
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-stone-850">Garantía</h4>
+                  <p className="text-xs sm:text-sm font-bold text-stone-850">Garantía</p>
                   <p className="text-[10px] sm:text-xs text-stone-500">Cuidado Certificado</p>
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function Hero() {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-stone-850">Eficiencia</h4>
+                  <p className="text-xs sm:text-sm font-bold text-stone-850">Eficiencia</p>
                   <p className="text-[10px] sm:text-xs text-stone-500">Entregas a tiempo</p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function Hero() {
                   <Archive className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-stone-850">Retiro y Entrega</h4>
+                  <p className="text-xs sm:text-sm font-bold text-stone-850">Retiro y Entrega</p>
                   <p className="text-[10px] sm:text-xs text-stone-500">A tu puerta</p>
                 </div>
               </div>
@@ -167,12 +167,11 @@ export default function Hero() {
               >
                 <div className="relative w-[95%] h-[95%]">
                   <Image
-                    src="/images/hero/lavanderia-principal.png"
+                    src="/images/hero/lavanderia-principal.webp"
                     alt="Maquinaria y servicio de Lavandería El Cobre"
                     fill
                     sizes="(min-width: 1024px) 34vw, 100vw"
                     className="object-contain drop-shadow-xl"
-                    unoptimized
                     priority
                   />
                 </div>

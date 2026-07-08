@@ -76,7 +76,7 @@ export default function Services() {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-xs uppercase tracking-widest text-brand-650 font-bold">Nuestra Especialidad</h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-stone-900">
-            Servicios Diseñados para <span className="text-brand-500">Cada Necesidad</span>
+            Servicios Diseñados para <span className="text-brand-600">Cada Necesidad</span>
           </h3>
           <div className="h-1 w-20 bg-brand-500 mx-auto rounded-full mt-2" />
           <p className="text-stone-600 text-base sm:text-lg">

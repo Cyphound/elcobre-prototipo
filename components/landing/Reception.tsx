@@ -95,7 +95,7 @@ export default function Reception() {
             <div className="space-y-4">
               <h2 className="text-xs uppercase tracking-widest text-brand-650 font-bold">Atención Presencial</h2>
               <h3 className="text-3xl sm:text-4xl font-extrabold text-stone-900">
-                Punto de Recepción <span className="text-brand-500">en Calama</span>
+                Punto de Recepción <span className="text-brand-600">en Calama</span>
               </h3>
               <div className="h-1 w-20 bg-brand-500 rounded-full mt-2" />
               <p className="text-stone-600 text-base max-w-xl leading-relaxed">

@@ -66,7 +66,7 @@ export default function GlassSelect({
         className={`w-full flex items-center ${Icon ? "pl-10" : "pl-4"} pr-10 py-3 rounded-xl border bg-stone-50 dark:bg-stone-800 text-sm font-medium text-left transition-colors focus:outline-none ${
           open ? "border-brand-500" : "border-stone-200 dark:border-white/10"
         } ${disabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer"} ${
-          selected ? "text-stone-800 dark:text-stone-200" : "text-stone-400 dark:text-stone-500"
+          selected ? "text-stone-800 dark:text-stone-200" : "text-stone-500 dark:text-stone-500"
         } ${className}`}
       >
         {Icon && (

@@ -68,7 +68,7 @@ export default function ContactForm() {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-xs uppercase tracking-widest text-brand-650 font-bold">Contacto</h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-stone-900">
-            Cotiza tu Servicio <span className="text-brand-500">Hoy Mismo</span>
+            Cotiza tu Servicio <span className="text-brand-600">Hoy Mismo</span>
           </h3>
           <div className="h-1 w-20 bg-brand-500 mx-auto rounded-full mt-2" />
           <p className="text-stone-600 text-base sm:text-lg">
@@ -123,7 +123,7 @@ export default function ContactForm() {
                 <div>
                   <h5 className="text-sm font-bold text-stone-900">Canales Directos de Comunicación</h5>
                   <p className="text-xs text-stone-500 mt-1 leading-relaxed">
-                    Llámanos o escríbenos directamente a <a href="tel:+56959594156" className="text-brand-600 font-bold hover:underline">+56 9 5959 4156</a> o al correo <a href="mailto:ventas@lavanderiaelcobrespa.com" className="text-brand-600 font-bold hover:underline break-all">ventas@lavanderiaelcobrespa.com</a>.
+                    Llámanos o escríbenos directamente a <a href="tel:+56959594156" className="text-brand-700 font-bold hover:underline">+56 9 5959 4156</a> o al correo <a href="mailto:ventas@lavanderiaelcobrespa.com" className="text-brand-700 font-bold hover:underline break-all">ventas@lavanderiaelcobrespa.com</a>.
                   </p>
                 </div>
               </div>
